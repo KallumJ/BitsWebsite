@@ -1,0 +1,26 @@
+.server-status {
+    text-align: left;
+    padding-top: 10px;
+    height: 250px;
+}
+
+.server-status-img {
+    width: 130px;
+    height: auto;
+    float: left;
+    padding-right: 10px;
+}
+
+.server-status-info {
+    vertical-align: middle;
+    display: inline;
+}
+
+.server-status p, .server-status h2 {
+    padding-bottom: 10px;
+}
+
+.player-head-container {
+    display: grid;
+    padding-top: 5px;
+}

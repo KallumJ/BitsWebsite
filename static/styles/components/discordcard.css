@@ -1,0 +1,9 @@
+.widget {
+    height: 420px;
+    width: 80%;
+}
+
+.discord-text {
+    font-size: 1.5rem;
+    padding:20px;
+}

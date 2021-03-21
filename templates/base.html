@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" class="masterpage">
+<head>
+    <meta charset="UTF-8">
+    <title>Bits Minecraft</title>
+    <link rel="stylesheet" href="/static/styles/w3.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/base.css') }}" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+</head>
+<body>
+        <nav class="navbar">
+            <h1 class="title"><a href="/"><img class="logo" src="{{ url_for('static', filename='assets/images/logo_transparent.png') }}" alt="Bits Logo" /></a>Bits</h1>
+            <div class="listcontainer">
+            <ul class="list">
+                <li class="link" onclick="location.href='/'">Home</li>
+                <li class="link" id="wiki" onclick="location.href='https://wiki.bits.team/doku.php'">Wiki</li>
+                <li class="link" id="store" onclick="location.href='store'">Store</li>
+                <li class="link" id="donate" onclick="location.href='donate'">Donate</li>
+                <li class="link" id="downloads" onclick="location.href='downloads'">Downloads</li>
+                <li class="link" onclick="location.href='https://voice.bits.team'">BitsVoice</li>
+                <li class="link" id="bitsplus" onclick="location.href='bitsplus'">Bits+</li>
+            </ul>
+        </div>
+        </nav>
+        <div class="page-content"></div>
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+.donate-header {
+    font-size: 5rem;
+    color: white;
+    text-shadow: 0px 2px 3px #000000;
+    text-align: center;
+    padding: 25px;
+}
+
+.donate-card {
+    background-color: white;
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+.donate-card-header {
+    font-size: 3rem;
+    padding: 10px;
+}
+
+.donate-card p, .donate-card li {
+    font-size: 1.5rem;
+}
+
+.shortened {
+    display:inline-block;
+    -webkit-transform:scale(0.5,1); /* Safari and Chrome */
+    -moz-transform:scale(0.5,1); /* Firefox */
+    -ms-transform:scale(0.5,1); /* IE 9 */
+    -o-transform:scale(0.5,1); /* Opera */
+    transform:scale(0.5,1); /* W3C */
+    margin-right: -30px;
+    margin-left: -30px;
+}
+
+.donate-card ul {
+    list-style-position: inside;
+}
+
+.donate-information {
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 25px;
+
+}
+
+.donate-information p {
+    color: white;
+    font-size: 1.5rem;
+    padding: 5px;
+}
+
+.donate-button {
+    padding: 20px;
+}
+
+.donate-page {
+    height: 95vh;
+}

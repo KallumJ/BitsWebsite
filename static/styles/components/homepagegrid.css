@@ -1,0 +1,31 @@
+:root {
+    --height-of-row: 600px;
+}
+
+.homepage-grid {
+    display: grid;
+    grid-template-columns: 45% 45%;
+    grid-template-rows: var(--height-of-row);
+    column-gap: 10%;
+    width: 90%;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 25px;
+    padding-bottom: 75px;
+}
+
+@media only screen and (max-width: 1300px) {
+    .homepage-grid {
+        grid-template-columns: 90%;
+        grid-template-rows: var(--height-of-row) var(--height-of-row);
+        margin-left: 10%;
+        row-gap: 5%;
+    }
+  }
+
+.homepage-card {
+    height: var(--height-of-row);
+    background-color: white;
+}
+
+
