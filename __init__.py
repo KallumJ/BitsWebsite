@@ -1,6 +1,7 @@
 from flask import Flask, render_template, send_from_directory
 import os
 from serverstatus import getBitsPlusStatus, getVanillaStatus
+from donors import getDonorPlayerList
 
 app = Flask(__name__)
 
@@ -17,7 +18,7 @@ def store():
 
 @app.route("/donate")
 def donate():
-    return render_template("donate.html")
+    return render_template("donate.html", donorList = getDonorPlayerList())
 
 
 @app.route("/downloads")

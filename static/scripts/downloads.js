@@ -1,17 +1,39 @@
-const masterpageStyle = `background: url("../static/assets/images/downloads/$") no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;`
-const initalBackground = "DownloadsBackground.png"
+const masterpageStyle = `background: url("$") no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;`
+const imageDir = "../static/assets/images/downloads/"
+
+// Preload images, so theres no white flash
+let wd1Img = new Image()
+wd1Img.src = imageDir + "112.png"
+
+let wd2Img = new Image()
+wd2Img.src = imageDir + "113.png"
+
+let wd3Img = new Image()
+wd3Img.src = imageDir + "114.png"
+
+let vResourceImg = new Image()
+vResourceImg.src = imageDir + "vanillapack.jpg"
+
+let bResourceImg = new Image()
+bResourceImg.src = imageDir + "bitsplus.png"
+
+let initalBackgroundImg = new Image()
+initalBackgroundImg.src = imageDir + "DownloadsBackground.png"
 
 
-function changeImg(url) {
-    document.getElementById("masterpage").style = masterpageStyle.replace("$", url)
+// Store images in array so JS doesnt release them
+let images = [wd1Img, wd2Img, wd3Img, vResourceImg, bResourceImg, initalBackgroundImg]
+
+function changeImg(index) {
+    document.getElementById("masterpage").style = masterpageStyle.replace("$", images[index].src)
 }
 
 function resetImg() {
-    changeImg(initalBackground)
+    changeImg(5)
 }
 
 function wd1On() {
-    changeImg("112.png");
+    changeImg(0);
 }
 
 function wd1Off() {
@@ -23,7 +45,7 @@ function wd1Redirect() {
 }
 
 function wd2On() {
-    changeImg("113.png")
+    changeImg(1)
 }
 
 function wd2Off() {
@@ -35,7 +57,7 @@ function wd2Redirect() {
 }
 
 function wd3On() {
-    changeImg("114.png")
+    changeImg(2)
 }
 
 function wd3Off() {
@@ -47,7 +69,7 @@ function wd3Redirect() {
 }
 
 function vResourceOn() {
-    changeImg("vanillapack.jpg")
+    changeImg(3)
 }
 
 function vResourceOff() {
@@ -59,7 +81,7 @@ function vResourceRedirect() {
 }
 
 function bResourceOn() {
-    changeImg("bitsplus.png")
+    changeImg(4)
 }
 
 function bResourceOff() {

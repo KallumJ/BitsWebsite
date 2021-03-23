@@ -28,5 +28,20 @@
         </div> 
   
       </div>
+      <h2 class="donor-head-title">Donor Hall of Fame</h2>
+
+      <div class="donor-grid">
+        {% for donor in donorList %}
+                <div class="donor-head-card w3-card-4">
+                    <img class="donor-head-image" src="{{ donor["headImage"] }}" alt="{{ donor["username"] }}">
+                    <div class="w3-container w3-center">
+                      <p class="donor-head-text">{{ donor["username" ]}}</p>
+                    </div>
+                  </div>
+        {% endfor %}
+        </div>
     </div>
+    </div>
+
+      
 {% endblock %}

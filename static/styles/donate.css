@@ -56,5 +56,40 @@
 }
 
 .donate-page {
-    height: 95vh;
+    min-height: 100%;
+}
+
+.donor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
+    width: 90%;
+    padding-top: 20px;
+    margin: 0 auto;
+    column-gap: 5px;
+    row-gap: 5px;
+    padding-bottom: 550px;
+}
+
+.donor-head-image {
+    display: block;
+    margin: auto;
+    height: 100px;
+    width: 100px;
+}
+
+.donor-head-card {
+    background-color: white;
+}
+
+.donor-head-text {
+    padding: 5px;
+}
+
+.donor-head-title {
+    color: white;
+    text-shadow: 0px 2px 3px #000000;
+    text-align: center;
+    font-size: 2rem;
+    padding-top: 50px;
 }
