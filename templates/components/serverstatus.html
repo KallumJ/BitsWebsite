@@ -6,11 +6,16 @@
         <h2>Vanilla</h2>
         <p>Online: {{ vStatus["online"] }}</p>
         <p>Ip Address: play.bits.team</p>
-        <p>Player Count: {{ vStatus["playerCount"] }}</p>
+        <p>Player Count: {{ vStatus["player_count"] }}</p>
     </div>
-    <div class="player-head-container" id="player-head-container-vanilla">
+
         <h2>Players Online:</h2>
-    </div>
+        <div class="status-player-head-grid">
+            {% for player in vStatus["player_img_srcs"] %}
+            <img class="status-player-head-img" src="{{ player }}" alt="" />
+            {% endfor %}
+        </div>
+
 
 </div>
 <hr />
@@ -20,9 +25,14 @@
         <h2>Bits+</h2>
         <p>Online: {{ bStatus["online"] }}</p>
         <p>Ip Address: plus.bits.team</p>
-        <p>Players Count: {{ vStatus["playerCount"] }}</p>
+        <p>Players Count: {{ bStatus["player_count"] }}</p>
     </div>
     <div class="player-head-container" id="player-head-container-bitsplus">
         <h2>Players Online:</h2>
+        <div class="status-player-head-grid">
+            {% for player in vStatus["player_img_srcs"] %}
+                <img class="status-player-head-img" src="{{ player }}" alt="" />
+            {% endfor %}
+        </div>
     </div>
 </div>

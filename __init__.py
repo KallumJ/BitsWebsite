@@ -1,14 +1,14 @@
-from flask import Flask, render_template, send_from_directory
-import os
-from serverstatus import getBitsPlusStatus, getVanillaStatus
-from donors import getDonorPlayerList
+from flask import Flask, render_template
+from serverstatus import get_bitsplus_status, get_vanilla_status
+from donors import get_donor_player_list
+from images import get_home_slideshow_images, get_bitsplus_slideshow_images
 
 app = Flask(__name__)
 
 
 @app.route("/")
 def home():
-    return render_template("home.html", vStatus = getVanillaStatus(), bStatus = getBitsPlusStatus())
+    return render_template("home.html", vStatus=get_vanilla_status(), bStatus=get_bitsplus_status(), home_slides_src=get_home_slideshow_images())
 
 
 @app.route("/store")
@@ -18,7 +18,7 @@ def store():
 
 @app.route("/donate")
 def donate():
-    return render_template("donate.html", donorList = getDonorPlayerList())
+    return render_template("donate.html", donorList=get_donor_player_list())
 
 
 @app.route("/downloads")
@@ -28,7 +28,7 @@ def downloads():
 
 @app.route("/bitsplus")
 def bitsplus():
-    return render_template("bitsplus.html")
+    return render_template("bitsplus.html", bitsplus_slides_src=get_bitsplus_slideshow_images())
 
     
 if __name__ == "__main__":

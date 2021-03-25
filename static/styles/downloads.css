@@ -22,9 +22,9 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    -webkit-transition: background-image 0.3s ease-in-out;
-    -moz-transition: background-image 0.3s ease-in-out;
-    -o-transition: background-image 0.3s ease-in-out;
-    transition: background-image 0.3s ease-in-out;
+    -webkit-transition: background-image 0.2s ease-in-out;
+    -moz-transition: background-image 0.2s ease-in-out;
+    -o-transition: background-image 0.2s ease-in-out;
+    transition: background-image 0.2s ease-in-out;
 }
 

@@ -1,26 +1,35 @@
 import requests
-import json
-
-def getVanillaStatus():
-    return getServerStatus("play.bits.team")
+from requests.exceptions import ConnectionError
 
 
-def getBitsPlusStatus():
-    return getServerStatus("plus.bits.team")
+def get_vanilla_status():
+    return get_server_status("https://bits.team/api/players?server=vanilla")
 
 
-def getServerStatus(server):
-    serverData = {
+def get_bitsplus_status():
+    return get_server_status("https://localhost")
+
+
+def get_server_status(server):
+    server_data = {
         "online": False,
-        "playerCount": 0
+        "player_count": 0,
+        "player_img_srcs": []
     }
 
-    #responseJson = requests.get(server).json()
+    try:
+        response_json = requests.get(server).json()
 
-    #serverData["online"] = responseJson["online"]
-    
-    #if serverData["online"] == True:
-    #    serverData["playerCount"] = responseJson["players"]["online"]
+        server_data["online"] = True
 
-    return serverData
+        for player in response_json:
+
+            server_data["player_count"] += 1
+
+            server_data["player_img_srcs"].append("https://visage.surgeplay.com/head/" + player["uuid"])
+    except ConnectionError as err:
+        print("{} API did not respond. {}".format(server, err))
+        return server_data
+
+    return server_data
 

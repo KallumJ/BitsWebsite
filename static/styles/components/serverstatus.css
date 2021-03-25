@@ -2,6 +2,7 @@
     text-align: left;
     padding-top: 10px;
     height: 250px;
+    padding-bottom: 310px;
 }
 
 .server-status-img {
@@ -20,7 +21,11 @@
     padding-bottom: 10px;
 }
 
-.player-head-container {
+.status-player-head-grid {
     display: grid;
-    padding-top: 5px;
+    grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
+}
+
+.status-player-head-img {
+    width: 75px;
 }
