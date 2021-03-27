@@ -18,7 +18,7 @@
 }
 
 .server-status p, .server-status h2 {
-    padding-bottom: 10px;
+    padding-bottom: 12px;
 }
 
 .status-player-head-grid {
@@ -28,4 +28,9 @@
 
 .status-player-head-img {
     width: 75px;
+}
+
+.server-status-noplayer {
+    text-align: center;
+    font-size: 2rem;
 }

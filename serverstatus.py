@@ -14,7 +14,7 @@ def get_server_status(server):
     server_data = {
         "online": False,
         "player_count": 0,
-        "player_img_srcs": []
+        "player_list": []
     }
 
     try:
@@ -23,13 +23,23 @@ def get_server_status(server):
         server_data["online"] = True
 
         for player in response_json:
+            player_obj = Player()
+            player_obj.name = player["name"]
+            player_obj.uuid = player["uuid"]
+            player_obj.img_src = "https://visage.surgeplay.com/head/" + player["uuid"]
+
+            server_data["player_list"].append(player_obj)
 
             server_data["player_count"] += 1
 
-            server_data["player_img_srcs"].append("https://visage.surgeplay.com/head/" + player["uuid"])
     except ConnectionError as err:
         print("{} API did not respond. {}".format(server, err))
         return server_data
 
     return server_data
 
+
+class Player:
+    name = ""
+    uuid = ""
+    img_src = ""

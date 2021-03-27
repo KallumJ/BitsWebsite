@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <link rel="stylesheet" href="../../static/styles/bitsplus.css">
+<link rel="stylesheet" href="../../static/styles/components/tooltip.css">
 
 <h1 class="bitsplus-header">Bits+</h1>
 <h2 class="bitsplus-subheading">A modded Minecraft experience, in Vanilla</h2>
@@ -8,7 +9,18 @@
 {% include "components/bitsplusslideshow.html" %}
 
 <div class="w3-container bitsplus-card">
+    <p class="bitsplus-desc">Ever wanted to experience modded Minecraft but are overwhelmed and have no idea where to start? Or maybe your computer isn’t NASA grade, so you have to play at 10fps? No more we say. What if we could take all the aspects we love from modded Minecraft, innovate on them, optimise them, and add them to the vanilla game? Well now you can! We are actively developing a vanilla “modded” Minecraft experience, with currently over 250+ items and blocks covering your favourite areas of modded minecraft, including tech (power systems, machinery, item and fluid transportation), magic (mana, spells, brews) custom food items, custom tools and enchantments and more! We are now in beta for you to come and test it out with us, we’d love to see you! </p>
+    <p class="bitsplus-preip"> Come try the open beta at: </p>
+    <p data-tooltip="Click to Copy!" data-tooltip-location="bottom" class="bitsplus-ip" onclick="copied('plus.bits.team')">plus.bits.team</p>
+
+    <p class="bitsplus-wikilink">You can learn more about each of the categories here, or on the <a href="https://wiki.plus.bits.team" target="_blank" rel="noopener noreferrer">Bits+ wiki</a></p>
+
+    {% include "components/bitspluscategories.html" %}
+
+    <p class="bitsplus-convince">Still not convinced? Maybe our cinematic trailer could sway you...</p>
+    <iframe class="bitsplus-video" src="https://www.youtube.com/embed/oJLpj7yT4po" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
     
 </div>
 
+<script src="../../static/scripts/components/tooltip.js"></script>
 {% endblock %}

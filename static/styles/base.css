@@ -3,7 +3,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 .masterpage {
     background-image: linear-gradient(rgb(94, 183, 221), rgb(163, 205, 223));
-    font-family: ubuntu !important; 
+    font-family: ubuntu, serif;
     margin: 0;
     padding: 0;
     border: 0;
@@ -19,7 +19,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 
 .navbar {
-    font-family: bebas_neueregular;
+    font-family: bebas_neueregular, serif;
     color:white;
     font-size: 2rem;
     position: relative;

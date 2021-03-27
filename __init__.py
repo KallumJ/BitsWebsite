@@ -8,7 +8,13 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template("home.html", vStatus=get_vanilla_status(), bStatus=get_bitsplus_status(), home_slides_src=get_home_slideshow_images())
+    return render_template("home.html", vStatus=get_vanilla_status(), bStatus=get_bitsplus_status(),
+                           home_slides_src=get_home_slideshow_images())
+
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
 
 
 @app.route("/store")
@@ -28,8 +34,9 @@ def downloads():
 
 @app.route("/bitsplus")
 def bitsplus():
-    return render_template("bitsplus.html", bitsplus_slides_src=get_bitsplus_slideshow_images())
+    return render_template("bitsplus.html",
+                           bitsplus_slides_src=get_bitsplus_slideshow_images())
 
-    
+
 if __name__ == "__main__":
     app.run(debug=True)

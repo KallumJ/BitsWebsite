@@ -13,3 +13,53 @@
     font-size: 1.3rem;
     padding-bottom: 20px;
 }
+
+.bitsplus-card {
+    background-color: white;
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.bitsplus-card p {
+    padding: 15px;
+}
+
+.bitsplus-ip {
+    font-size: 1.5rem;
+    text-align: center;
+    color: aqua;
+    
+}
+
+.bitsplus-desc {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.bitsplus-preip {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.bitsplus-wikilink {
+    text-align: center;
+}
+
+.bitsplus-wikilink a {
+    color: blue;
+}
+
+.bitsplus-convince {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.bitsplus-video {
+   text-align: center;
+    width: 90%;
+    height: 720px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
