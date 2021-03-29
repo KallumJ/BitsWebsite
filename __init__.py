@@ -3,6 +3,7 @@ from serverstatus import get_bitsplus_status, get_vanilla_status
 from donors import get_donor_player_list
 from images import get_home_slideshow_images, get_bitsplus_slideshow_images
 from profiles import get_all_player_profiles
+from products import get_all_products
 
 app = Flask(__name__)
 
@@ -15,7 +16,7 @@ def home():
 
 @app.route("/store/")
 def store():
-    return render_template("store.html")
+    return render_template("store.html", products=get_all_products())
 
 
 @app.route("/donate/")
