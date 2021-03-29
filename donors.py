@@ -1,7 +1,6 @@
 import json
 
-PLAYERS_JSON_FILE = "./static/players.json"
-WHITELIST_JSON_FILE = "./static/whitelist.json"
+from file_utils import PLAYERS_JSON_FILE, WHITELIST_JSON_FILE
 
 
 def get_donor_uuids():

@@ -1,0 +1,54 @@
+:root {
+    --profile-height: 300px;
+}
+
+.profile-card {
+    width: 90%;
+    margin: 0 auto;
+    background-color: white;
+    margin-top: 50px;
+    min-height: var(--profile-height);
+}
+
+.profile-content {
+    display: grid;
+    grid-template-columns: 85% 15%;
+}
+
+.profile-card p {
+    font-size: 1.2rem;
+    padding: 10px;
+}
+
+
+.profile-img {
+    width: 100%;
+    padding: 10px;
+}
+
+.profile-header {
+    font-size: 2rem;
+}
+
+.profiles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+    grid-template-rows: auto;
+    padding-bottom: 30px;
+}
+
+@media only screen and (max-width: 1300px) {
+    .profiles-grid {
+        grid-template-columns: 90%;
+        grid-template-rows: auto;
+        margin-left: 10%;
+    }
+  }
+
+.profiles-header {
+       font-size: 5rem;
+    color: white;
+    text-shadow: 0px 2px 3px #000000;
+    text-align: center;
+    padding: 25px;
+}
