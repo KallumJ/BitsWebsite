@@ -1,4 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Plugin Info</h1>
+<link rel="stylesheet" href="../static/styles/plugin-info.css">
+
+<h1 class="plugin-info-header">Plugin Info</h1>
+<div class="plugin-info-card w3-card-4">
+   {% include "components/plugincategories.html" %}
+</div>
+
 {% endblock %}
