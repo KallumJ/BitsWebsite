@@ -50,10 +50,14 @@ def rules():
     return render_template("rules.html")
 
 
-@app.route("/advancements-statistics")
+@app.route("/advancements-statistics/")
 def advancements_statistics():
     return render_template("advancements-statistics.html")
 
+
+@app.route("/events/")
+def events():
+    return render_template("events.html")
 
 
 if __name__ == "__main__":

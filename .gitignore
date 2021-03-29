@@ -2,3 +2,4 @@
 .vscode
 static/players.json
 static/whitelist.json
+/templates/components/calendar.html

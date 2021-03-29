@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="../static/styles/events.css">
+<div>
+<h1 class="events-header">Events</h1>
+<p class="events-subheader">Below is a calendar containing all upcoming Bits events. See something you like? Get involved!</p>
+{% include "components/calendar.html" %}
+</div>
+{% endblock %}
