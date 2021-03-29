@@ -40,19 +40,24 @@ def player_profiles():
     return render_template("player-profiles.html", profiles=get_all_player_profiles())
 
 
+@app.route("/rules-whitelist/")
+def rules_whitelist():
+    return render_template("rules-whitelist.html")
+
+
 @app.route("/whitelist/")
 def whitelist():
-    return render_template("whitelist.html")
+    return redirect(url_for("rules_whitelist"))
 
 
 @app.route("/rules/")
 def rules():
-    return render_template("rules.html")
+    return redirect(url_for("rules_whitelist"))
 
 
-@app.route("/advancements-statistics/")
-def advancements_statistics():
-    return render_template("advancements-statistics.html")
+@app.route("/plugin-info/")
+def plugin_info():
+    return render_template("plugin-info.html")
 
 
 @app.route("/events/")
