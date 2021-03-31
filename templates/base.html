@@ -16,7 +16,7 @@
                 <li class="link" id="store" onclick="location.href='/store'">Store</li>
                 <li class="link" id="donate" onclick="location.href='/donate'">Donate</li>
                 <li class="link" id="downloads" onclick="location.href='/downloads'">Downloads</li>
-                <li class="link" onclick="location.href='https://voice.bits.team'">BitsVoice</li>
+                <li class="link" onclick="document.getElementById('modal').style.display='block'">BitsVoice</li>
                 <li class="link" id="bitsplus" onclick="location.href='/bitsplus'">Bits+</li>
                 <div class="dropdown">
                     <li class="link">Other</li>
@@ -32,6 +32,19 @@
             </ul>
         </div>
         </nav>
+
+        <div id="modal" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-container w3-blue">
+        <span onclick="document.getElementById('modal').style.display='none'"
+        class="w3-button w3-display-topright">&times;</span>
+        <h2>BitsVoice...</h2>
+      </header>
+      <div class="w3-container">
+        <p>...is coming soon... Stay tuned...</p>
+      </div>
+    </div>
+  </div>
         <div class="page-content"></div>
     {% block content %}
     {% endblock %}

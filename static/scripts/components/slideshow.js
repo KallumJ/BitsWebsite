@@ -1,10 +1,19 @@
 var slideIndex = 1;
 showSlides(slideIndex);
 
+let autoplay = setInterval(() => {
+  showSlides(slideIndex += 1);
+}, 5000)
+
 
 // Next/previous controls
 function plusSlides(n) {
   showSlides(slideIndex += n);
+  clearInterval(autoplay)
+
+  autoplay = setInterval(() => {
+  showSlides(slideIndex += 1);
+}, 5000)
 }
 
 // Thumbnail image controls
@@ -26,7 +35,5 @@ function showSlides(n) {
     dots[i].className = dots[i].className.replace(" active", "");
   }
   slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-  captionText.innerHTML = slides[slideIndex-1].alt;
 }
 
