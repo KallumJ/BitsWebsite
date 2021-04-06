@@ -5,27 +5,40 @@
     text-align: center;
     padding: 25px;
 }
-
-.calendar {
-    display: block;
-    margin: 0 auto;
-    box-shadow: 0px 5px 5px #27272780;
-    -webkit-box-shadow: 0px 5px 5px #27272780;
-    -moz-box-shadow: 0px 5px 5px #27272780;
-}
-
 .events-subheader {
     color: white;
     text-align: center;
     text-shadow: 0px 2px 3px #000000;
     font-size: 1.5rem;
     padding-bottom: 30px;
-}
-
-.calendar-container {
-    padding-bottom: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .masterpage {
     min-height: 100vh;
+}
+
+.event-table {
+    width: 75%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.event-table * {
+    font-weight: normal;
+}
+
+.no-events {
+    color: white;
+    text-align: center;
+    text-shadow: 0px 2px 3px #000000;
+    font-size: 2rem;
+    padding-bottom: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.events-table-header {
+    font-weight: bold !important;
 }

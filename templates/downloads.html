@@ -1,15 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
-    <link rel="stylesheet" href="../static/styles/downloads.css">
+<link href="../static/styles/downloads.css" rel="stylesheet">
 <div class="downloads-page">
     <ul class="w3-ul w3-card-4 w3-white downloads-list">
         <li class="downloads-list-subheading"><h3>World Downloads</h3></li>
-        <li class="downloads-list-item" onmouseover="wd1On()" onmouseout="wd1Off()" onclick="wd1Redirect()">1.12 World Download</li>
-        <li class="downloads-list-item" onmouseover="wd2On()" onmouseout="wd2Off()" onclick="wd2Redirect()">1.13 World Download</li>
-        <li class="downloads-list-item" onmouseover="wd3On()" onmouseout="wd3Off()" onclick="wd3Redirect()">1.14 World Download</li>
+        <li class="downloads-list-item" onclick="wd1Redirect()" onmouseout="wd1Off()" onmouseover="wd1On()">1.12 World
+            Download
+        </li>
+        <li class="downloads-list-item" onclick="wd2Redirect()" onmouseout="wd2Off()" onmouseover="wd2On()">1.13 World
+            Download
+        </li>
+        <li class="downloads-list-item" onclick="wd3Redirect()" onmouseout="wd3Off()" onmouseover="wd3On()">1.14 World
+            Download
+        </li>
         <li class="downloads-list-subheading"><h3>Resource Packs</h3></li>
-        <li class="downloads-list-item" onmouseover="vResourceOn()" onmouseout="vResourceOff()" onclick="vResourceRedirect()">Bits Resource Pack</li>
-        <li class="downloads-list-item" onmouseover="bResourceOn()" onmouseout="bResourceOff()" onclick="bResourceRedirect()">Bits+ Resource Pack</li>
+        <li class="downloads-list-item" onclick="vResourceRedirect()" onmouseout="vResourceOff()"
+            onmouseover="vResourceOn()">Bits Resource Pack
+        </li>
+        <li class="downloads-list-item" onclick="bResourceRedirect()" onmouseout="bResourceOff()"
+            onmouseover="bResourceOn()">Bits+ Resource Pack
+        </li>
     </ul>
 </div>
 <script src="../static/scripts/downloads.js"></script>

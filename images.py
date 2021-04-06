@@ -18,4 +18,3 @@ def get_image_srcs(directory_path):
         file_list.append(img_src.format(file))
 
     return file_list
-

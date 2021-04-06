@@ -1,5 +1,7 @@
-from discord_markdown.discord_markdown import convert_to_html
 import os
+
+from discord_markdown.discord_markdown import convert_to_html
+
 from file_utils import get_player_uuid
 
 PROFILES_DIR = "./static/assets/profiles/"

@@ -1,69 +1,13 @@
-from flask import Flask, render_template, redirect, url_for
-from serverstatus import get_bitsplus_status, get_vanilla_status
-from donors import get_donor_player_list
-from images import get_home_slideshow_images, get_bitsplus_slideshow_images
-from profiles import get_all_player_profiles
-from products import get_all_products
+from flask import Flask
 
+from routes import routes
+
+# Initialise the site
 app = Flask(__name__)
 
+# Load the routes
+app.register_blueprint(routes)
 
-@app.route("/")
-def home():
-    return render_template("home.html", vStatus=get_vanilla_status(), bStatus=get_bitsplus_status(),
-                           home_slides_src=get_home_slideshow_images())
-
-
-@app.route("/store/")
-def store():
-    return render_template("store.html", products=get_all_products())
-
-
-@app.route("/donate/")
-def donate():
-    return render_template("donate.html", donorList=get_donor_player_list())
-
-
-@app.route("/downloads/")
-def downloads():
-    return render_template("downloads.html")
-
-
-@app.route("/bitsplus/")
-def bitsplus():
-    return render_template("bitsplus.html",
-                           bitsplus_slides_src=get_bitsplus_slideshow_images())
-
-
-@app.route("/player-profiles/")
-def player_profiles():
-    return render_template("player-profiles.html", profiles=get_all_player_profiles())
-
-
-@app.route("/rules-whitelist/")
-def rules_whitelist():
-    return render_template("rules-whitelist.html")
-
-
-@app.route("/whitelist/")
-def whitelist():
-    return redirect(url_for("rules_whitelist"))
-
-
-@app.route("/rules/")
-def rules():
-    return redirect(url_for("rules_whitelist"))
-
-
-@app.route("/plugin-info/")
-def plugin_info():
-    return render_template("plugin-info.html")
-
-
-@app.route("/events/")
-def events():
-    return render_template("events.html")
-
-
+# Start the site
 if __name__ == "__main__":
     app.run(debug=True)

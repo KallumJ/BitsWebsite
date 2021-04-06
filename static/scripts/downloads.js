@@ -41,7 +41,7 @@ function wd1Off() {
 }
 
 function wd1Redirect() {
-    location.href="https://hogwarts.bits.team/world-download/1.12"
+    location.href = "https://hogwarts.bits.team/world-download/1.12"
 }
 
 function wd2On() {
@@ -53,7 +53,7 @@ function wd2Off() {
 }
 
 function wd2Redirect() {
-    location.href="https://hogwarts.bits.team/world-download/1.13"
+    location.href = "https://hogwarts.bits.team/world-download/1.13"
 }
 
 function wd3On() {
@@ -65,7 +65,7 @@ function wd3Off() {
 }
 
 function wd3Redirect() {
-    location.href="http://hogwarts.bits.team/world-download/1.15"
+    location.href = "http://hogwarts.bits.team/world-download/1.15"
 }
 
 function vResourceOn() {
@@ -77,7 +77,7 @@ function vResourceOff() {
 }
 
 function vResourceRedirect() {
-    location.href="https://bits.team/resourcepack"
+    location.href = "https://bits.team/resourcepack"
 }
 
 function bResourceOn() {
@@ -89,5 +89,5 @@ function bResourceOff() {
 }
 
 function bResourceRedirect() {
-    location.href="https://hogwarts.bits.team/resources"
+    location.href = "https://hogwarts.bits.team/resources"
 }
