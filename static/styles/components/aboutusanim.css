@@ -35,9 +35,19 @@
     transform: translateY(100px);
 }
 
-.container .card:hover .face.face1{
-    background: #25abe3;
+@media only screen and (min-width: 1057px) {
+     .container .card:hover .face.face1{
+        background: #25abe3;
+        transform: translateY(0);
+    }
+
+    .container .card:hover .face.face2{
     transform: translateY(0);
+    }
+
+    .container .card:hover .face.face1 .content{
+    opacity: 1;
+    }
 }
 
 .container .card .face.face1 .content{
@@ -45,9 +55,7 @@
     transition: 0.5s;
 }
 
-.container .card:hover .face.face1 .content{
-    opacity: 1;
-}
+
 
 .container .card .face.face1 .content img{
     max-width: 100px;
@@ -73,9 +81,7 @@
     transform: translateY(-100px);
 }
 
-.container .card:hover .face.face2{
-    transform: translateY(0);
-}
+
 
 .container .card .face.face2 .content p{
     margin: 0;

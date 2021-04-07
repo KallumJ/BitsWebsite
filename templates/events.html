@@ -14,8 +14,8 @@
             <table id="events-table" class="w3-table-all w3-card-4 event-table">
                 <tr>
                     <th class="events-table-header">Name</th>
-                    <th class="events-table-header">Time</th>
                     <th class="events-table-header">Date</th>
+                    <th class="events-table-header">Time</th>
                 </tr>
                     {% for event in events_list %}
                         <script>addEventToList('{{ event.name }}', '{{ event.time }}', '{{ event.date }}')</script>
