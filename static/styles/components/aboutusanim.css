@@ -2,7 +2,7 @@
     background: white;
 }
 
-.container{
+.container {
     width: 100%;
     position: relative;
     display: flex;
@@ -14,18 +14,18 @@
 }
 
 
-.container .card{
+.container .card {
     position: relative;
     cursor: pointer;
 }
 
-.container .card .face{
+.container .card .face {
     width: 300px;
     height: 200px;
     transition: 0.5s;
 }
 
-.container .card .face.face1{
+.container .card .face.face1 {
     position: relative;
     background: white;
     display: flex;
@@ -36,32 +36,31 @@
 }
 
 @media only screen and (min-width: 1057px) {
-     .container .card:hover .face.face1{
+    .container .card:hover .face.face1 {
         background: #25abe3;
         transform: translateY(0);
     }
 
-    .container .card:hover .face.face2{
-    transform: translateY(0);
+    .container .card:hover .face.face2 {
+        transform: translateY(0);
     }
 
-    .container .card:hover .face.face1 .content{
-    opacity: 1;
+    .container .card:hover .face.face1 .content {
+        opacity: 1;
     }
 }
 
-.container .card .face.face1 .content{
+.container .card .face.face1 .content {
     opacity: 1;
     transition: 0.5s;
 }
 
 
-
-.container .card .face.face1 .content img{
+.container .card .face.face1 .content img {
     max-width: 100px;
 }
 
-.container .card .face.face1 .content h3{
+.container .card .face.face1 .content h3 {
     margin: 10px 0 0;
     padding: 0;
     color: black;
@@ -69,7 +68,7 @@
     font-size: 1.5em;
 }
 
-.container .card .face.face2{
+.container .card .face.face2 {
     position: relative;
     background: #fff;
     display: flex;
@@ -82,8 +81,7 @@
 }
 
 
-
-.container .card .face.face2 .content p{
+.container .card .face.face2 .content p {
     margin: 0;
     padding: 0;
     font-size: 1.1rem;

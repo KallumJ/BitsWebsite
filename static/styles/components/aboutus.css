@@ -6,7 +6,7 @@
 .aboutus-card {
     background-color: white;
     font-size: 1.5rem;
-    padding:20px;
+    padding: 20px;
 }
 
 .aboutus-card-container {
@@ -16,7 +16,7 @@
 }
 
 .aboutus-ip {
-    padding-top:10px;
+    padding-top: 10px;
 }
 
 .aboutus-ip #ip {

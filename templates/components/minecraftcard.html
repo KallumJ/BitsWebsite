@@ -12,61 +12,62 @@
             <img alt="Bits Logo" class="server-status-img"
                  src="{{ url_for('static', filename='assets/images/logo.png') }}">
             <div class="server-status-info">
-                <h2>Vanilla</h2>
+                <h2>Survival</h2>
                 <p>Online: {{ vStatus["online"] }}
                     {% if vStatus["online"] %}
                 <div class="led-green"></div>
                 {% else %}
-                <div class="led-red"></span>
-                    {% endif %}
-                    </p>
-                    <p>Ip Address: play.bits.team</p>
-                    <p>Player Count: {{ vStatus["player_count"] }}</p>
-                </div>
-
-                <h2>Players Online:</h2>
-                {% if vStatus["player_count"] == 0 %}
-                <p class="server-status-noplayer">No Players Online</p>
-                {% else %}
-
-                <div class="status-player-head-grid">
-                    {% for player in vStatus["player_list"] %}
-                    <img alt="{{ player.name }}" class="status-player-head-img" src="{{ player.img_src }}"
-                         title="{{ player.name }} "/>
-                    {% endfor %}
-                </div>
-
+                <div class="led-red"></div>
                 {% endif %}
-            </div>
-            <hr/>
-            <div class="server-status bitsplus-status">
-                <img alt="Bits+ Logo" class="server-status-img"
-                     src="{{ url_for('static', filename='assets/images/bitspluslogo.png') }}">
-                <div class="server-status-info">
-                    <h2>Bits+</h2>
-                    <p>Online: {{ bStatus["online"] }}
-                        {% if bStatus["online"] %}
-                    <div class="led-green"></div>
-                    {% else %}
-                    <div class="led-red"></div>
-                    {% endif %}
-                    </p>
-                    <p>Ip Address: plus.bits.team</p>
-                    <p>Player Count: {{ bStatus["player_count"] }}</p>
-                </div>
-
-                <h2>Players Online:</h2>
-                {% if bStatus["player_count"] == 0 %}
-                <p class="server-status-noplayer">No Players Online</p>
-                {% else %}
-                <div class="status-player-head-grid">
-                    {% for player in bStatus["player_list"] %}
-                    <img alt="{{ player.name }}" class="status-player-head-img" src="{{ player.img_src }}"
-                         title="{{ player.name }}"/>
-                    {% endfor %}
-                </div>
-                {% endif %}
+                </p>
+                <p>Ip Address: play.bits.team</p>
+                <p>Player Count: {{ vStatus["player_count"] }}</p>
             </div>
 
+            <h2>Players Online:</h2>
+            {% if vStatus["player_count"] == 0 %}
+            <p class="server-status-noplayer">No Players Online</p>
+            {% else %}
+
+            <div class="status-player-head-grid">
+                {% for player in vStatus["player_list"] %}
+                <img alt="{{ player.name }}" class="status-player-head-img" src="{{ player.img_src }}"
+                     title="{{ player.name }} "/>
+                {% endfor %}
+            </div>
+
+            {% endif %}
         </div>
+        <hr/>
+        <div class="server-status bitsplus-status">
+            <img alt="Bits+ Logo" class="server-status-img"
+                 src="{{ url_for('static', filename='assets/images/logo.png') }}">
+            <div class="server-status-info">
+                <h2>Creative</h2>
+                <p>Online: {{ cStatus["online"] }}
+                    {% if cStatus["online"] %}
+                <div class="led-green"></div>
+                {% else %}
+                <div class="led-red"></div>
+                {% endif %}
+                </p>
+                <p>Server Command: /server creative</p>
+                <p>Player Count: {{ cStatus["player_count"] }}</p>
+            </div>
+
+            <h2>Players Online:</h2>
+            {% if cStatus["player_count"] == 0 %}
+            <p class="server-status-noplayer">No Players Online</p>
+            {% else %}
+            <div class="status-player-head-grid">
+                {% for player in cStatus["player_list"] %}
+                <img alt="{{ player.name }}" class="status-player-head-img" src="{{ player.img_src }}"
+                     title="{{ player.name }}"/>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
     </div>
+</div>
+</div>

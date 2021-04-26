@@ -3,22 +3,22 @@ const imageDir = "../static/assets/images/downloads/"
 
 // Preload images, so theres no white flash
 let wd1Img = new Image()
-wd1Img.src = imageDir + "112.png"
+wd1Img.src = imageDir + "112.jpg"
 
 let wd2Img = new Image()
-wd2Img.src = imageDir + "113.png"
+wd2Img.src = imageDir + "113.jpg"
 
 let wd3Img = new Image()
-wd3Img.src = imageDir + "114.png"
+wd3Img.src = imageDir + "114.jpg"
 
 let vResourceImg = new Image()
 vResourceImg.src = imageDir + "vanillapack.jpg"
 
 let bResourceImg = new Image()
-bResourceImg.src = imageDir + "bitsplus.png"
+bResourceImg.src = imageDir + "bitsplus.jpg"
 
 let initalBackgroundImg = new Image()
-initalBackgroundImg.src = imageDir + "DownloadsBackground.png"
+initalBackgroundImg.src = imageDir + "DownloadsBackground.jpg"
 
 
 // Store images in array so JS doesnt release them

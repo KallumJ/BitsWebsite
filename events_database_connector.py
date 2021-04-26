@@ -1,7 +1,7 @@
-from config import eventsDbUsername, eventsDBURL, eventsDbPassword
-import mysql.connector
-from datetime import datetime
-import pytz
+from config import eventsLocalDbName, eventsLocalDbURL, eventsLocalDbUsername, eventsLocalDbPassword, \
+    eventsDevDbPassword, eventsDevDbUsername, eventsDevDbName, eventsDevDbURL
+from database import Database
+from remote_server_utils import check_on_hogwarts
 
 
 class Event(object):
@@ -11,20 +11,15 @@ class Event(object):
         self.date = date
 
 
-class Database(object):
+class EventsDatabase(object):
     def __init__(self):
-        self.connection = mysql.connector.connect(
-            host=eventsDBURL,
-            user=eventsDbUsername,
-            password=eventsDbPassword,
-            database="events"
-        )
+        if check_on_hogwarts():
+            self.database = Database(eventsLocalDbURL, eventsLocalDbUsername, eventsLocalDbPassword, eventsLocalDbName)
+        else:
+            self.database = Database(eventsDevDbURL, eventsDevDbUsername, eventsDevDbPassword, eventsDevDbName)
 
     def get_agenda(self):
-        # Select correct database, and retrieve all the events
-        cursor = self.connection.cursor()
-        cursor.execute("SELECT * FROM event")
-        events_sql_result = cursor.fetchall()
+        events_sql_result = self.database.execute_query("SELECT * FROM event WHERE event_Date >= CURRENT_DATE()")
 
         # Create list of events
         events = []
@@ -34,22 +29,6 @@ class Database(object):
             event_date = str(event[3])
 
             # Check event is upcoming, and not already happened
-            event_time_arr = event_time.split(":")
-            event_date_arr = event_date.split("-")
-
-            date = datetime(
-                year=int(event_date_arr[0]),
-                month=int(event_date_arr[1]),
-                day=int(event_date_arr[2]),
-                hour=int(event_time_arr[0]),
-                minute=int(event_time_arr[1]),
-                second=int(event_time_arr[2]),
-            )
-
-            timezone = pytz.timezone("UTC")
-            date = timezone.localize(date)
-
-            if date.date() > datetime.today().date():
-                events.append(Event(name=event_name, time=event_time, date=event_date))
+            events.append(Event(name=event_name, time=event_time, date=event_date))
 
         return events

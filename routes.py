@@ -1,18 +1,20 @@
-from flask import render_template, redirect, url_for, Blueprint, request
+from flask import render_template, redirect, url_for, Blueprint
+from flask_cors import cross_origin
 
 from donors import get_donor_player_list
+from events_database_connector import EventsDatabase
 from images import get_home_slideshow_images, get_bitsplus_slideshow_images
+from player_database_connector import PlayerDatabase
 from products import get_all_products
 from profiles import get_all_player_profiles
-from serverstatus import get_bitsplus_status, get_vanilla_status
-from events_database_connector import Database
+from serverstatus import get_creative_status, get_vanilla_status
 
 routes = Blueprint("routes", __name__, template_folder="templates")
 
 
 @routes.route("/")
 def home():
-    return render_template("home.html", vStatus=get_vanilla_status(), bStatus=get_bitsplus_status(),
+    return render_template("home.html", vStatus=get_vanilla_status(), cStatus=get_creative_status(),
                            home_slides_src=get_home_slideshow_images())
 
 
@@ -49,12 +51,17 @@ def rules_whitelist():
 
 @routes.route("/whitelist/")
 def whitelist():
-    return redirect(url_for("rules_whitelist"))
+    return redirect(url_for("routes.rules_whitelist"))
 
 
 @routes.route("/rules/")
 def rules():
-    return redirect(url_for("rules_whitelist"))
+    return redirect(url_for("routes.rules_whitelist"))
+
+
+@routes.route("/apply/")
+def apply():
+    return redirect(url_for("routes.rules_whitelist"))
 
 
 @routes.route("/plugin-info/")
@@ -64,4 +71,15 @@ def plugin_info():
 
 @routes.route("/events/")
 def events():
-    return render_template("events.html", events_list=Database().get_agenda())
+    return render_template("events.html", events_list=EventsDatabase().get_agenda())
+
+
+@routes.route("/statistics/")
+def statistics():
+    return render_template("statistics.html", seasons=PlayerDatabase().get_all_vanilla_seasons())
+
+
+@routes.route("/statistics_info/<season>")
+@cross_origin(origin="*", headers=['Content-Type', 'Authorization'])
+def statistics_get(season):
+    return PlayerDatabase().get_season_stats_json(season)

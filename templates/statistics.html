@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<link href="../static/styles/statistics.css" rel="stylesheet">
+<h1 class="statistics-header">Statistics</h1>
+<div class="seasons-statistics">
+    <div class="w3-bar w3-blue statistics-season-button-bar">
+        {% for server in seasons %}
+        <button class="w3-bar-item w3-button" onclick='openSeason("{{ server.get_sql_id() }}")'>{{ server.name }}
+        </button>
+        {% endfor %}
+    </div>
+    <div class="seasons_container">
+        {% for server in seasons %}
+        <div class="season" id="{{ server.get_sql_id() }}" style="display:none"></div>
+        {% endfor %}
+    </div>
+</div>
+<script src="../static/scripts/statistics.js"></script>
+<script src="../static/scripts/components/accordion.js"></script>
+{% endblock %}

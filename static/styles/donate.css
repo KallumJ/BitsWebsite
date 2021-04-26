@@ -24,12 +24,12 @@
 }
 
 .shortened {
-    display:inline-block;
-    -webkit-transform:scale(0.5,1); /* Safari and Chrome */
-    -moz-transform:scale(0.5,1); /* Firefox */
-    -ms-transform:scale(0.5,1); /* IE 9 */
-    -o-transform:scale(0.5,1); /* Opera */
-    transform:scale(0.5,1); /* W3C */
+    display: inline-block;
+    -webkit-transform: scale(0.5, 1); /* Safari and Chrome */
+    -moz-transform: scale(0.5, 1); /* Firefox */
+    -ms-transform: scale(0.5, 1); /* IE 9 */
+    -o-transform: scale(0.5, 1); /* Opera */
+    transform: scale(0.5, 1); /* W3C */
     margin-right: -30px;
     margin-left: -30px;
 }

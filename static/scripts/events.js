@@ -1,5 +1,6 @@
 function addEventToList(name, time, date) {
-    let convertedDate = new Date(time + " " + date + "UTC")
+    let convertedDate = new Date(date.replaceAll("-", "/") + " " + time + " " + "UTC")
+
 
     let tableRow = document.createElement("tr")
 
@@ -26,7 +27,7 @@ function addEventToList(name, time, date) {
 function getTimeString(date) {
     let hours = date.getHours().toString()
     let minutes = String(date.getMinutes()).padStart(2, "0")
-    let timezone = date.toTimeString().match(/\((.+)\)/)[1]
+    let timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
 
     return hours + ":" + minutes + " " + timezone
 }

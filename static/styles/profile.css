@@ -43,10 +43,10 @@
         grid-template-rows: auto;
         margin-left: 10%;
     }
-  }
+}
 
 .profiles-header {
-       font-size: 5rem;
+    font-size: 5rem;
     color: white;
     text-shadow: 0px 2px 3px #000000;
     text-align: center;
@@ -59,4 +59,4 @@
     text-shadow: 0px 2px 3px #000000;
     font-size: 1.5rem;
     padding-bottom: 30px;
-   }
+}

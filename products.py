@@ -1,5 +1,6 @@
 from file_utils import get_products_file
 
+
 def get_all_products():
     product_file = get_products_file()
 

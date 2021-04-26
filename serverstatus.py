@@ -1,13 +1,24 @@
+from json.decoder import JSONDecodeError
+
 import requests
 from requests.exceptions import ConnectionError
 
+from config import vanillaLocalServerAPI, vanillaRemoteServerAPI, creativeLocalServerAPI, creativeRemoteServerAPI
+from remote_server_utils import check_on_hogwarts
+
 
 def get_vanilla_status():
-    return get_server_status("https://bits.team/api/players?server=vanilla")
+    if check_on_hogwarts():
+        return get_server_status(vanillaLocalServerAPI)
+    else:
+        return get_server_status(vanillaRemoteServerAPI)
 
 
-def get_bitsplus_status():
-    return get_server_status("https://localhost")
+def get_creative_status():
+    if check_on_hogwarts():
+        return get_server_status(creativeLocalServerAPI)
+    else:
+        return get_server_status(creativeRemoteServerAPI)
 
 
 def get_server_status(server):
@@ -32,7 +43,7 @@ def get_server_status(server):
 
             server_data["player_count"] += 1
 
-    except ConnectionError as err:
+    except (ConnectionError, JSONDecodeError) as err:
         print("{} API did not respond. {}".format(server, err))
         return server_data
 
