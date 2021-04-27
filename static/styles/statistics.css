@@ -24,7 +24,9 @@
     color: white;
     text-shadow: 0px 2px 3px #000000;
     font-size: 3rem;
-    padding-bottom: 5px;
+    padding-bottom: 15px;
+    text-align: center;
+    padding-top: 30px;
 }
 
 .all-seasons-header {
@@ -43,6 +45,10 @@
     min-height: 100vh;
 }
 
+.top-head-img {
+    width: 250px;
+}
+
 .statistics-head-img {
     width: 35px;
     padding-right: 5px;
@@ -54,4 +60,25 @@
     text-align: center;
     font-size: 1.8rem;
     padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.top-3-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+}
+
+.top-3-card {
+    font-size: 1.2rem;
+    padding: 10px;
+    margin: 5px;
+    width: 500px;
+}
+
+.top-3-bolder {
+    font-weight: bolder;
 }

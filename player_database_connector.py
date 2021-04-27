@@ -183,31 +183,14 @@ class PlayerDatabase(object):
         return seasons
 
     def get_top_3(self):
-        top = []
-
         # Get the current season
         season = self.get_season_from_list(playerDbDefaultServer)
 
-        # Check every statistic, and track the top 3 highest ones
-        for player in season.players:
-            for statistic in player.statistics:
-                statistic_item = (player, statistic)
+        # Sort by score
+        players = sorted(season.players, key=lambda k: k.total_score, reverse=True)
 
-                if len(top) < 3:
-                    top.append(statistic_item)
-                else:
-                    for i in range(len(top)):
-                        top_stat = top[i]
-
-                        top_stat_obj = top_stat[1]
-                        if top_stat_obj.get_statistic_level() < statistic.get_statistic_level():
-                            top[i] = statistic_item
-                            break
-                        elif top_stat_obj.get_statistic_level() == statistic.get_statistic_level():
-                            if top_stat_obj.count < statistic.count:
-                                top[i] = statistic_item
-                                break
-        return top
+        # Return the top 3
+        return players[0], players[1], players[2]
 
 
 def format_vanilla_server_name(name):
