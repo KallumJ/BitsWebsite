@@ -6,10 +6,6 @@
     padding: 25px;
 }
 
-.statistics-season-button-bar {
-
-}
-
 .seasons-statistics {
     width: 90%;
     margin: 0 auto;
@@ -22,4 +18,40 @@
 
 .statistics-container {
     padding: 20px;
+}
+
+.top-3-header {
+    color: white;
+    text-shadow: 0px 2px 3px #000000;
+    font-size: 3rem;
+    padding-bottom: 5px;
+}
+
+.all-seasons-header {
+    color: white;
+    text-shadow: 0px 2px 3px #000000;
+    font-size: 3rem;
+    padding-bottom: 5px;
+    padding-top: 50px;
+}
+
+.medal-img {
+    width: 25px;
+}
+
+.statistics-page {
+    min-height: 100vh;
+}
+
+.statistics-head-img {
+    width: 35px;
+    padding-right: 5px;
+}
+
+.statistics-subheading {
+    color: white;
+    text-shadow: 0px 1px 2px #000000;
+    text-align: center;
+    font-size: 1.8rem;
+    padding-bottom: 20px;
 }

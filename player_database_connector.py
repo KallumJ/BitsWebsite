@@ -1,12 +1,10 @@
 import re
 
 from config import playerLocalDbName, playerLocalDbPassword, playerLocalDbURL, playerDevDbPassword, \
-    playerLocalDbUsername, playerDevDbUsername, playerDevDbName, playerDevDbURL
+    playerLocalDbUsername, playerDevDbUsername, playerDevDbName, playerDevDbURL, playerDbDefaultServer
 from database import Database
 from remote_server_utils import check_on_hogwarts
 
-#TODO: order by total statistic score
-#TODO: implement total statistic score
 
 class Server(object):
     def __init__(self, server_id, server_name):
@@ -41,6 +39,7 @@ class Player(object):
         self.uuid = uuid
         self.statistics = []
         self.name = name
+        self.total_score = 0
 
 
 class PlayerDatabase(object):
@@ -57,6 +56,15 @@ class PlayerDatabase(object):
         sql_id = self.database.execute_query("SELECT id FROM uuid WHERE uuid=" + uuid_str)
 
         return str(sql_id[0][0])
+
+    @staticmethod
+    def assign_player_scores(players):
+        for player in players:
+            total_score = 0
+            for statistic in player.statistics:
+                total_score += statistic.get_statistic_level()
+
+            player.total_score = total_score
 
     def get_name_from_uuid(self, uuid):
         name = self.database.execute_query(
@@ -75,7 +83,8 @@ class PlayerDatabase(object):
             if season.get_sql_id() == int(id):
                 return season
 
-    # Return a list of Server objects with all the seasons named vanilla
+    # Return a list of Server objects with all the seasons named vanilla, that have statistics, WITHOUT PLAYER
+    # INFORMATION
     def get_all_vanilla_seasons(self):
         seasons = []
 
@@ -87,7 +96,10 @@ class PlayerDatabase(object):
                 season_id = str(season[0])
                 season_name = format_vanilla_server_name(season[1])
 
-                seasons.append(Server(server_id=season_id, server_name=season_name))
+                # Append server if it has statistics
+                statistic_table = self.database.execute_query("SELECT * FROM statistic_data WHERE server=" + season_id)
+                if statistic_table:
+                    seasons.append(Server(server_id=season_id, server_name=season_name))
 
         return seasons
 
@@ -119,14 +131,16 @@ class PlayerDatabase(object):
                 json_player = {
                     "uuid": player.uuid,
                     "name": player.name,
-                    "statistics": json_statistics
+                    "statistics": json_statistics,
+                    "score": player.total_score
                 }
                 json_players.append(json_player)
 
         season_json = {
             "name": season.name,
-            "players": json_players
+            "players": sorted(json_players, key=lambda k: k["score"], reverse=True)
         }
+
         return season_json
 
     def get_all_seasons_statistics(self):
@@ -162,7 +176,38 @@ class PlayerDatabase(object):
             statistic_id = int(statistic_item[1])
             playerObj.statistics.append(Statistic(statistic_id, self.get_statistic_name_from_id(statistic_id),
                                                   str(statistic_item[3]), str(statistic_item[4])))
+
+        for season in seasons:
+            self.assign_player_scores(season.players)
+
         return seasons
+
+    def get_top_3(self):
+        top = []
+
+        # Get the current season
+        season = self.get_season_from_list(playerDbDefaultServer)
+
+        # Check every statistic, and track the top 3 highest ones
+        for player in season.players:
+            for statistic in player.statistics:
+                statistic_item = (player, statistic)
+
+                if len(top) < 3:
+                    top.append(statistic_item)
+                else:
+                    for i in range(len(top)):
+                        top_stat = top[i]
+
+                        top_stat_obj = top_stat[1]
+                        if top_stat_obj.get_statistic_level() < statistic.get_statistic_level():
+                            top[i] = statistic_item
+                            break
+                        elif top_stat_obj.get_statistic_level() == statistic.get_statistic_level():
+                            if top_stat_obj.count < statistic.count:
+                                top[i] = statistic_item
+                                break
+        return top
 
 
 def format_vanilla_server_name(name):

@@ -44,7 +44,8 @@ function openSeason(seasonId) {
 
 function createPlayerButton(player) {
     let playerButton = document.createElement("button")
-    playerButton.innerHTML = player.name + "▼"
+
+    playerButton.innerHTML = "<img src='https://visage.surgeplay.com/head/" + player.uuid + "' class='statistics-head-img'>" + player.name + " | Total Score: " + player.score + "▼"
     playerButton.classList.add("w3-button")
     playerButton.classList.add("w3-block")
     playerButton.classList.add("w3-white")

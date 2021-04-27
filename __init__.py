@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_cors import CORS
 
 from routes import routes
@@ -10,6 +10,12 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 # Load the routes
 app.register_blueprint(routes)
+
+
+@app.errorhandler(404)
+def not_found(e):
+    return render_template("not-found.html"), 404
+
 
 # Start the site
 if __name__ == "__main__":

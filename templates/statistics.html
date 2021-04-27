@@ -1,20 +1,66 @@
 {% extends "base.html" %}
 {% block content %}
 <link href="../static/styles/statistics.css" rel="stylesheet">
-<h1 class="statistics-header">Statistics</h1>
-<div class="seasons-statistics">
-    <div class="w3-bar w3-blue statistics-season-button-bar">
-        {% for server in seasons %}
-        <button class="w3-bar-item w3-button" onclick='openSeason("{{ server.get_sql_id() }}")'>{{ server.name }}
-        </button>
-        {% endfor %}
-    </div>
-    <div class="seasons_container">
-        {% for server in seasons %}
-        <div class="season" id="{{ server.get_sql_id() }}" style="display:none"></div>
-        {% endfor %}
+<div class="statistics-page">
+    <h1 class="statistics-header">Statistics</h1>
+    <p class="statistics-subheading">Here are some leaderboards for the statistics found on the server. Can you top the
+        charts?</p>
+    <div class="seasons-statistics">
+        {% if top_3|length >= 3 %}
+        <h2 class="top-3-header">Top 3</h2>
+        <table class="w3-table-all top-3-table">
+            <tr>
+                <th>Player</th>
+                <th>Name</th>
+                <th>Level</th>
+                <th>Count</th>
+            </tr>
+            <tr class="gold-stat">
+                <th><img alt="" class="statistics-head-img"
+                         src="https://visage.surgeplay.com/head/{{ top_3[0][0].uuid }}">{{ top_3[0][0].name }}<img alt=""
+                                                           class="medal-img" src="../static/assets/images/medalicons/gold.png">
+                </th>
+                <th>{{ top_3[0][1].get_statistic_name() }}</th>
+                <th>{{ top_3[0][1].get_statistic_level() }}</th>
+                <th>{{ top_3[0][1].count}}</th>
+            </tr>
+            <tr class="silver-stat">
+                <th><img alt="" class="statistics-head-img"
+                         src="https://visage.surgeplay.com/head/{{ top_3[1][0].uuid }}">{{ top_3[1][0].name }}<img alt=""
+                                                           class="medal-img" src="../static/assets/images/medalicons/silver.png">
+                </th>
+                <th>{{ top_3[1][1].get_statistic_name() }}</th>
+                <th>{{ top_3[1][1].get_statistic_level() }}</th>
+                <th>{{ top_3[1][1].count}}</th>
+            </tr>
+            <tr class="bronze-stat">
+                <th><img alt="" class="statistics-head-img"
+                         src="https://visage.surgeplay.com/head/{{ top_3[2][0].uuid }}">{{ top_3[2][0].name }}<img alt=""
+                                                           class="medal-img" src="../static/assets/images/medalicons/bronze.png">
+                </th>
+                <th>{{ top_3[2][1].get_statistic_name() }}</th>
+                <th>{{ top_3[2][1].get_statistic_level() }}</th>
+                <th>{{ top_3[2][1].count}}</th>
+            </tr>
+        </table>
+        {% endif %}
+
+
+        <h2 class="all-seasons-header">All Seasons Ranked</h2>
+        <div class="w3-bar w3-blue statistics-season-button-bar">
+            {% for server in seasons %}
+            <button class="w3-bar-item w3-button" onclick='openSeason("{{ server.get_sql_id() }}")'>{{ server.name }}
+            </button>
+            {% endfor %}
+        </div>
+        <div class="seasons_container">
+            {% for server in seasons %}
+            <div class="season" id="{{ server.get_sql_id() }}" style="display:none"></div>
+            {% endfor %}
+        </div>
     </div>
 </div>
 <script src="../static/scripts/statistics.js"></script>
 <script src="../static/scripts/components/accordion.js"></script>
+<script>openSeason(parseInt('{{ default }}'))</script>
 {% endblock %}

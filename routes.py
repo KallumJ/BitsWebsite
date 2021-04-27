@@ -1,6 +1,7 @@
 from flask import render_template, redirect, url_for, Blueprint
 from flask_cors import cross_origin
 
+from config import playerDbDefaultServer
 from donors import get_donor_player_list
 from events_database_connector import EventsDatabase
 from images import get_home_slideshow_images, get_bitsplus_slideshow_images
@@ -11,6 +12,8 @@ from serverstatus import get_creative_status, get_vanilla_status
 
 routes = Blueprint("routes", __name__, template_folder="templates")
 
+
+# TODO: 404 page
 
 @routes.route("/")
 def home():
@@ -76,7 +79,8 @@ def events():
 
 @routes.route("/statistics/")
 def statistics():
-    return render_template("statistics.html", seasons=PlayerDatabase().get_all_vanilla_seasons())
+    return render_template("statistics.html", seasons=PlayerDatabase().get_all_vanilla_seasons(),
+                           top_3=PlayerDatabase().get_top_3(), default=playerDbDefaultServer)
 
 
 @routes.route("/statistics_info/<season>")
