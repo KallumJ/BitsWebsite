@@ -6,6 +6,7 @@ from database import Database
 from remote_server_utils import check_on_hogwarts
 
 
+# A class to model a Server
 class Server(object):
     def __init__(self, server_id, server_name):
         self.sqlId = server_id,
@@ -16,6 +17,7 @@ class Server(object):
         return self.sqlId[0]
 
 
+# A class to model a Statistic
 class Statistic(object):
     def __init__(self, id, name, count, level):
         self.id = id
@@ -33,6 +35,7 @@ class Statistic(object):
         return int(self.level[0])
 
 
+# A class to model a player
 class Player(object):
     def __init__(self, player_id, uuid, name):
         self.sqlId = player_id
@@ -42,7 +45,9 @@ class Player(object):
         self.total_score = 0
 
 
+# A class to model the player information database
 class PlayerDatabase(object):
+    # Constructs a Player Database object
     def __init__(self):
         if check_on_hogwarts():
             self.database = Database(playerLocalDbURL, playerLocalDbUsername, playerLocalDbPassword, playerLocalDbName)
@@ -51,12 +56,14 @@ class PlayerDatabase(object):
 
         self.seasons = self.get_all_seasons_statistics()
 
+    # Returns the sql id of the player with the provided uuid
     def get_sql_id_from_uuid(self, uuid):
         uuid_str = "'" + str(uuid) + "'"
         sql_id = self.database.execute_query("SELECT id FROM uuid WHERE uuid=" + uuid_str)
 
         return str(sql_id[0][0])
 
+    # Sums the total score of the player, and assigns it to the total_score attribute
     @staticmethod
     def assign_player_scores(players):
         for player in players:
@@ -66,6 +73,7 @@ class PlayerDatabase(object):
 
             player.total_score = total_score
 
+    # Return the players nickname if present, or username if not, with the matching uuid
     def get_name_from_uuid(self, uuid):
         name = self.database.execute_query(
             "SELECT username, nickname FROM player_data WHERE uuid=" + self.get_sql_id_from_uuid(uuid))
@@ -94,7 +102,7 @@ class PlayerDatabase(object):
 
             if str(season[1]).startswith("vanilla"):
                 season_id = str(season[0])
-                season_name = format_vanilla_server_name(season[1])
+                season_name = self.format_vanilla_server_name(season[1])
 
                 # Append server if it has statistics
                 statistic_table = self.database.execute_query("SELECT * FROM statistic_data WHERE server=" + season_id)
@@ -136,6 +144,7 @@ class PlayerDatabase(object):
                 }
                 json_players.append(json_player)
 
+        # Compile all data into a single dictionary, ordered descendingly by score,
         season_json = {
             "name": season.name,
             "players": sorted(json_players, key=lambda k: k["score"], reverse=True)
@@ -143,6 +152,7 @@ class PlayerDatabase(object):
 
         return season_json
 
+    # Returns a list of all seasons with all player and statistic information
     def get_all_seasons_statistics(self):
         statistics_table = self.database.execute_query("SELECT * FROM statistic_data")
 
@@ -157,7 +167,7 @@ class PlayerDatabase(object):
                     seasonObj = season
             if not seasonObj:
                 server_name = self.database.execute_query("SELECT name FROM server WHERE id=" + str(server_id))
-                seasonObj = Server(server_id, format_vanilla_server_name(str(server_name[0])))
+                seasonObj = Server(server_id, self.format_vanilla_server_name(str(server_name[0])))
                 seasons.append(seasonObj)
 
             player_id = int(statistic_item[0])
@@ -177,12 +187,16 @@ class PlayerDatabase(object):
             playerObj.statistics.append(Statistic(statistic_id, self.get_statistic_name_from_id(statistic_id),
                                                   str(statistic_item[3]), str(statistic_item[4])))
 
+        # Assign every player their total score
         for season in seasons:
             self.assign_player_scores(season.players)
 
         return seasons
 
+    # Returns the 3 players with the highest total score, as a tuple
+    # TODO: Implement in SQL
     def get_top_3(self):
+
         # Get the current season
         season = self.get_season_from_list(playerDbDefaultServer)
 
@@ -192,6 +206,7 @@ class PlayerDatabase(object):
         # Return the top 3
         return players[0], players[1], players[2]
 
-
-def format_vanilla_server_name(name):
-    return "Season " + re.sub("[^0-9]", "", name)
+    # Remove all non number characters, and append it to the word Season
+    @staticmethod
+    def format_vanilla_server_name(name):
+        return "Season " + re.sub("[^0-9]", "", name)

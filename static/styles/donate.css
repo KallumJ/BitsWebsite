@@ -60,7 +60,10 @@
 }
 
 .donor-grid {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
     width: 90%;
@@ -72,14 +75,14 @@
 }
 
 .donor-head-image {
-    display: block;
-    margin: auto;
     height: 100px;
     width: 100px;
 }
 
 .donor-head-card {
     background-color: white;
+    text-align: center;
+    width: 200px;
 }
 
 .donor-head-text {
