@@ -10,19 +10,19 @@
         <h2 class="top-3-header">Top 3</h2>
         <div class="top-3-grid">
         <div class="w3-card-4 w3-white top-3-card">
-            <img class="top-head-img" src="https://visage.surgeplay.com/head/{{ top_3[0].uuid }}"  alt="">
+            <img class="top-head-img" src="https://visage.surgeplay.com/head/{{ top_3[0].uuid.decode() }}"  alt="">
                 <div class="w3-container w3-center">
                     <p><span class="top-3-bolder">{{ top_3[0].name }}</span><img class="medal-img" src="../static/assets/images/medalicons/gold.png" alt=""> Total Score: <span class="top-3-bolder">{{ top_3[0].total_score }}</span></p>
               </div>
         </div>
         <div class="w3-card-4 w3-white top-3-card">
-            <img class="top-head-img" src="https://visage.surgeplay.com/head/{{ top_3[1].uuid }}"  alt="">
+            <img class="top-head-img" src="https://visage.surgeplay.com/head/{{ top_3[1].uuid.decode() }}"  alt="">
                 <div class="w3-container w3-center">
                     <p><span class="top-3-bolder">{{ top_3[1].name }}</span><img class="medal-img" src="../static/assets/images/medalicons/silver.png" alt=""> Total Score: <span class="top-3-bolder">{{ top_3[1].total_score }}</span></p>
               </div>
         </div>
         <div class="w3-card-4 w3-white top-3-card">
-            <img class="top-head-img" src="https://visage.surgeplay.com/head/{{ top_3[2].uuid }}"  alt="">
+            <img class="top-head-img" src="https://visage.surgeplay.com/head/{{ top_3[2].uuid.decode() }}"  alt="">
                 <div class="w3-container w3-center">
                     <p><span class="top-3-bolder">{{ top_3[2].name }}</span><img class="medal-img" src="../static/assets/images/medalicons/bronze.png" alt=""> Total Score: <span class="top-3-bolder">{{ top_3[2].total_score }}</span></p>
               </div>

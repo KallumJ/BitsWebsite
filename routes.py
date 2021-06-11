@@ -86,4 +86,6 @@ def statistics():
 @routes.route("/statistics_info/<season>")
 @cross_origin(origin="*", headers=['Content-Type', 'Authorization'])
 def statistics_get(season):
+    print(PlayerDatabase().get_season_stats_json(season))
+
     return PlayerDatabase().get_season_stats_json(season)

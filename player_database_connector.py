@@ -58,9 +58,10 @@ class PlayerDatabase(object):
 
     # Returns the sql id of the player with the provided uuid
     def get_sql_id_from_uuid(self, uuid):
-        uuid_str = "'" + str(uuid) + "'"
-        sql_id = self.database.execute_query("SELECT id FROM uuid WHERE uuid=" + uuid_str)
+        cursor = self.database.get_cursor()
 
+        cursor.execute("SELECT id FROM uuid WHERE uuid=%s", (uuid,))
+        sql_id = cursor.fetchall()
         return str(sql_id[0][0])
 
     # Sums the total score of the player, and assigns it to the total_score attribute
@@ -100,7 +101,7 @@ class PlayerDatabase(object):
 
         for season in season_table:
 
-            if str(season[1]).startswith("vanilla"):
+            if str(season[1]).startswith("season"):
                 season_id = str(season[0])
                 season_name = self.format_vanilla_server_name(season[1])
 
@@ -137,7 +138,7 @@ class PlayerDatabase(object):
             # Add player if they have at least 1 statistic over level 1
             if json_statistics:
                 json_player = {
-                    "uuid": player.uuid,
+                    "uuid": player.uuid.decode(),
                     "name": player.name,
                     "statistics": json_statistics,
                     "score": player.total_score
@@ -210,3 +211,8 @@ class PlayerDatabase(object):
     @staticmethod
     def format_vanilla_server_name(name):
         return "Season " + re.sub("[^0-9]", "", name)
+
+    @staticmethod
+    def print_season(season):
+        print(season.name)
+        print(season.players)

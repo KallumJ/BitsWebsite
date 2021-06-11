@@ -11,7 +11,7 @@ function openSeason(seasonId) {
     let seasonContainer = document.getElementById(seasonId)
     seasonContainer.innerHTML = ""
 
-    fetch('http://localhost.localdomain:5000/statistics_info/' + seasonId).then(response => response.json()).then(seasonData => {
+    fetch('https://bits.team/statistics_info/' + seasonId).then(response => response.json()).then(seasonData => {
         for (let i = 0; i < seasonData.players.length; i++) {
             let player = seasonData.players[i]
 
