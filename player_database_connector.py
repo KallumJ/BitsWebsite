@@ -205,7 +205,10 @@ class PlayerDatabase(object):
         players = sorted(season.players, key=lambda k: k.total_score, reverse=True)
 
         # Return the top 3
-        return players[0], players[1], players[2]
+        if not len(players) >= 3:
+            return []
+        else:
+            return players[0], players[1], players[2]
 
     # Remove all non number characters, and append it to the word Season
     @staticmethod

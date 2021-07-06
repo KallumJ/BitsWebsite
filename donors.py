@@ -1,4 +1,5 @@
 from file_utils import get_whitelist_file, get_players_file
+from player_database_connector import PlayerDatabase
 
 
 def get_donor_uuids():
@@ -18,7 +19,13 @@ def get_donor_uuids():
 def get_donor_player_list():
     donors = []
 
-    whitelist_json = get_whitelist_file()
+    # Get list of donor uuids from database
+    db = PlayerDatabase()
+    db_connection = db.database.connection
+    db_cursor = db_connection.cursor()
+    db_cursor.execute("SELECT uuid.uuid FROM uuid INNER JOIN player_data pd on uuid.id = pd.uuid WHERE vip=true")
+
+    uuids = db_cursor.fetchall()
 
     # Kall, Koenn, and our alts
     blacklist_uuids = ["b9be5135-fe8c-4a34-9e63-ffeef0fc80fb",
@@ -26,14 +33,15 @@ def get_donor_player_list():
                        "90fd7b3f-239f-4ba4-809c-427081ebfa4e",
                        "0d594da7-6b81-463e-a0a7-d21c2e6b76f5"]
 
-    for uuid in get_donor_uuids():
+    for uuidTuple in uuids:
+        uuid = uuidTuple[0].decode()
 
-        # Check whitelist for matching player, if found,
-        # add their name and head to the donors list
-        for playerJson in whitelist_json:
-            if playerJson["uuid"] == uuid and not blacklist_uuids.__contains__(uuid):
-                player_dict = {"username": playerJson["name"], "headImage": "https://visage.surgeplay.com/head/" + uuid}
+        # If player is not blacklisted
+        if not blacklist_uuids.__contains__(uuid):
 
-                donors.append(player_dict)
+            # Add player to list of donors
+            player_dict = {"username": db.get_name_from_uuid(uuid), "headImage": "https://visage.surgeplay.com/head/" + uuid}
+
+            donors.append(player_dict)
 
     return donors

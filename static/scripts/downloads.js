@@ -11,6 +11,9 @@ wd2Img.src = imageDir + "113.jpg"
 let wd3Img = new Image()
 wd3Img.src = imageDir + "114.jpg"
 
+let wd4Img = new Image()
+wd4Img.src = imageDir + "116.jpg"
+
 let vResourceImg = new Image()
 vResourceImg.src = imageDir + "vanillapack.jpg"
 
@@ -22,7 +25,7 @@ initalBackgroundImg.src = imageDir + "DownloadsBackground.jpg"
 
 
 // Store images in array so JS doesnt release them
-let images = [wd1Img, wd2Img, wd3Img, vResourceImg, bResourceImg, initalBackgroundImg]
+let images = [wd1Img, wd2Img, wd3Img, vResourceImg, bResourceImg, initalBackgroundImg, wd4Img]
 
 function changeImg(index) {
     document.getElementById("masterpage").style = masterpageStyle.replace("$", images[index].src)
@@ -66,6 +69,18 @@ function wd3Off() {
 
 function wd3Redirect() {
     location.href = "http://download.bits.team/worlds/1.15/"
+}
+
+function wd4On() {
+    changeImg(6)
+}
+
+function wd4Off() {
+    resetImg()
+}
+
+function wd4Redirect() {
+    location.href = "https://download.bits.team/worlds/1.16"
 }
 
 function vResourceOn() {
