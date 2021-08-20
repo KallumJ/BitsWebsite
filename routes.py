@@ -89,3 +89,7 @@ def statistics_get(season):
     print(PlayerDatabase().get_season_stats_json(season))
 
     return PlayerDatabase().get_season_stats_json(season)
+
+@routes.route("/discord/")
+def discord():
+    return redirect('https://discord.com/invite/Arfcnku')
