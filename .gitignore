@@ -4,4 +4,6 @@ static/players.json
 static/whitelist.json
 /config.py
 venv/
-__pycache__
+__pycache__/
+win-venv/
+linux-venv/

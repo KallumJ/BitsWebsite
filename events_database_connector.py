@@ -13,22 +13,29 @@ class Event(object):
 
 class EventsDatabase(object):
     def __init__(self):
-        if check_on_hogwarts():
-            self.database = Database(eventsLocalDbURL, eventsLocalDbUsername, eventsLocalDbPassword, eventsLocalDbName)
-        else:
-            self.database = Database(eventsDevDbURL, eventsDevDbUsername, eventsDevDbPassword, eventsDevDbName)
+        try:
+            if check_on_hogwarts():
+                self.database = Database(eventsLocalDbURL, eventsLocalDbUsername, eventsLocalDbPassword, eventsLocalDbName)
+            else:
+                self.database = Database(eventsDevDbURL, eventsDevDbUsername, eventsDevDbPassword, eventsDevDbName)
+        except Exception as err:
+            print("There was an error connecting to the events database" + str(err))
+            self.database = None
 
     def get_agenda(self):
-        events_sql_result = self.database.execute_query("SELECT * FROM event WHERE event_Date >= CURRENT_DATE()")
+        if self.database:
+            events_sql_result = self.database.execute_query("SELECT * FROM event WHERE event_Date >= CURRENT_DATE()")
 
-        # Create list of events
-        events = []
-        for event in events_sql_result:
-            event_name = str(event[1])
-            event_time = str(event[2])
-            event_date = str(event[3])
+            # Create list of events
+            events = []
+            for event in events_sql_result:
+                event_name = str(event[1])
+                event_time = str(event[2])
+                event_date = str(event[3])
 
-            # Check event is upcoming, and not already happened
-            events.append(Event(name=event_name, time=event_time, date=event_date))
+                # Check event is upcoming, and not already happened
+                events.append(Event(name=event_name, time=event_time, date=event_date))
 
-        return events
+            return events
+        else:
+            return None

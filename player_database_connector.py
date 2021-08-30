@@ -49,12 +49,16 @@ class Player(object):
 class PlayerDatabase(object):
     # Constructs a Player Database object
     def __init__(self):
-        if check_on_hogwarts():
-            self.database = Database(playerLocalDbURL, playerLocalDbUsername, playerLocalDbPassword, playerLocalDbName)
-        else:
-            self.database = Database(playerDevDbURL, playerDevDbUsername, playerDevDbPassword, playerDevDbName)
+        try:
+            if check_on_hogwarts():
+                self.database = Database(playerLocalDbURL, playerLocalDbUsername, playerLocalDbPassword, playerLocalDbName)
+            else:
+                self.database = Database(playerDevDbURL, playerDevDbUsername, playerDevDbPassword, playerDevDbName)
 
-        self.seasons = self.get_all_seasons_statistics()
+            self.seasons = self.get_all_seasons_statistics()
+        except Exception as err:
+            print("There was a problem while trying to connect to the statistics database" + str(err))
+            self.database = None
 
     # Returns the sql id of the player with the provided uuid
     def get_sql_id_from_uuid(self, uuid):
@@ -95,22 +99,25 @@ class PlayerDatabase(object):
     # Return a list of Server objects with all the seasons named vanilla, that have statistics, WITHOUT PLAYER
     # INFORMATION
     def get_all_vanilla_seasons(self):
-        seasons = []
+        if self.database:
+            seasons = []
 
-        season_table = self.database.execute_query("SELECT * FROM server")
+            season_table = self.database.execute_query("SELECT * FROM server")
 
-        for season in season_table:
+            for season in season_table:
 
-            if str(season[1]).startswith("season"):
-                season_id = str(season[0])
-                season_name = self.format_vanilla_server_name(season[1])
+                if str(season[1]).startswith("season"):
+                    season_id = str(season[0])
+                    season_name = self.format_vanilla_server_name(season[1])
 
-                # Append server if it has statistics
-                statistic_table = self.database.execute_query("SELECT * FROM statistic_data WHERE server=" + season_id)
-                if statistic_table:
-                    seasons.append(Server(server_id=season_id, server_name=season_name))
+                    # Append server if it has statistics
+                    statistic_table = self.database.execute_query("SELECT * FROM statistic_data WHERE server=" + season_id)
+                    if statistic_table:
+                        seasons.append(Server(server_id=season_id, server_name=season_name))
 
-        return seasons
+            return seasons
+        else:
+            return None
 
     # Returns the name of the statistic of the given id
     def get_statistic_name_from_id(self, id):
@@ -198,17 +205,20 @@ class PlayerDatabase(object):
     # TODO: Implement in SQL
     def get_top_3(self):
 
-        # Get the current season
-        season = self.get_season_from_list(playerDbDefaultServer)
+        if self.database:
+            # Get the current season
+            season = self.get_season_from_list(playerDbDefaultServer)
 
-        # Sort by score
-        players = sorted(season.players, key=lambda k: k.total_score, reverse=True)
+            # Sort by score
+            players = sorted(season.players, key=lambda k: k.total_score, reverse=True)
 
-        # Return the top 3
-        if not len(players) >= 3:
-            return []
+            # Return the top 3
+            if not len(players) >= 3:
+                return []
+            else:
+                return players[0], players[1], players[2]
         else:
-            return players[0], players[1], players[2]
+            return []
 
     # Remove all non number characters, and append it to the word Season
     @staticmethod

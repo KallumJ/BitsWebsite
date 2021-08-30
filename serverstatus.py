@@ -1,7 +1,4 @@
-from json.decoder import JSONDecodeError
-
 import requests
-from requests.exceptions import ConnectionError
 
 from config import vanillaLocalServerAPI, vanillaRemoteServerAPI, creativeLocalServerAPI, creativeRemoteServerAPI
 from remote_server_utils import check_on_hogwarts
@@ -43,9 +40,9 @@ def get_server_status(server):
 
             server_data["player_count"] += 1
 
-    except (ConnectionError, JSONDecodeError) as err:
+    except Exception as err:
         print("{} API did not respond. {}".format(server, err))
-        return server_data
+        return None
 
     return server_data
 
