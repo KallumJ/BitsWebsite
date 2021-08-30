@@ -3,4 +3,5 @@
 static/players.json
 static/whitelist.json
 /config.py
-/deploy.sh
+venv/
+__pycache__

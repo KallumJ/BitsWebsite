@@ -13,8 +13,6 @@ from serverstatus import get_creative_status, get_vanilla_status
 routes = Blueprint("routes", __name__, template_folder="templates")
 
 
-# TODO: 404 page
-
 @routes.route("/")
 def home():
     return render_template("home.html", vStatus=get_vanilla_status(), cStatus=get_creative_status(),
