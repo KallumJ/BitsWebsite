@@ -1,4 +1,4 @@
-# Bits Website
+# Bits Website [![Build Status](https://jenkins.bits.team/job/Bits/job/BitsWebsite/job/master/badge/icon)](https://jenkins.bits.team/job/Bits/job/BitsWebsite/job/master/)
 
 A website for the Bits Minecraft/Gaming community, built with Python, using the Flask web framework.
 
