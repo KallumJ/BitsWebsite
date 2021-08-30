@@ -37,14 +37,18 @@
     <h2 class="donor-head-title">Donor Hall of Fame</h2>
 
     <div class="donor-grid">
-        {% for donor in donorList %}
-        <div class="donor-head-card w3-card-4">
-            <img alt="{{ donor['username'] }}" class="donor-head-image" src="{{ donor['headImage'] }}">
-            <div class="w3-container w3-center">
-                <p class="donor-head-text">{{ donor["username" ]}}</p>
+        {% if donorList %}
+            {% for donor in donorList %}
+            <div class="donor-head-card w3-card-4">
+                <img alt="{{ donor['username'] }}" class="donor-head-image" src="{{ donor['headImage'] }}">
+                <div class="w3-container w3-center">
+                    <p class="donor-head-text">{{ donor["username" ]}}</p>
+                </div>
             </div>
-        </div>
-        {% endfor %}
+            {% endfor %}
+        {% else %}
+            <h2 class="donor-head-title">Something went wrong...</h2>
+        {% endif %}
     </div>
 </div>
 </div>
