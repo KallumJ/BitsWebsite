@@ -28,7 +28,7 @@ def get_donor_player_list():
 
         uuids = db_cursor.fetchall()
 
-        # Kall, Koenn, and our alts
+        # Kall, Nex, and our alts
         blacklist_uuids = ["b9be5135-fe8c-4a34-9e63-ffeef0fc80fb",
                            "cac04f5f-726f-4192-8290-24bdd9e7c9aa",
                            "90fd7b3f-239f-4ba4-809c-427081ebfa4e",
