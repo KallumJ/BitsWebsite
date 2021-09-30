@@ -1,8 +1,8 @@
 import os
 
 from discord_markdown.discord_markdown import convert_to_html
+from player_data_api import get_uuid_from_username, get_effective_name_from_uuid
 
-from file_utils import get_player_uuid
 
 PROFILES_DIR = "./static/assets/profiles/"
 
@@ -16,12 +16,13 @@ def get_all_player_profiles():
         player_profile = PlayerProfile()
 
         # Make the name of the player, the file name
-        player_profile.name = os.path.splitext(os.path.basename(profile_file.name))[0]
+        file_name = os.path.splitext(os.path.basename(profile_file.name))[0]
+        player_profile.name = get_effective_name_from_uuid(file_name)
 
         # Convert the file content to html
         player_profile.html_profile = convert_to_html(profile_file.read())
 
-        player_profile.player_img = "https://visage.surgeplay.com/full/832/" + get_player_uuid(player_profile.name)
+        player_profile.player_img = "https://visage.surgeplay.com/full/832/" + get_uuid_from_username(player_profile.name)
 
         player_profiles_list.append(player_profile)
 

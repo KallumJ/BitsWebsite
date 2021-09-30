@@ -10,6 +10,7 @@ discord-markdown = "*"
 requests = "*"
 mysql-connector = "*"
 waitress = "*"
+pika = "*"
 
 [dev-packages]
 
