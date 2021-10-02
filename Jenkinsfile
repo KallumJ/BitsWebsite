@@ -15,7 +15,7 @@ pipeline {
             steps {
                 // build the docker image based on the Dockerfile and tag it with the build number
                 // we use `-H ssh://jenkins@hogwarts` to connect to the docker daemon on hogwarts
-                sh "docker -H ssh://jenkins@hogwarts build -t ${PROJECT_NAME}:${BUILD_NUMBER} ."
+                sh "docker -H ssh://jenkins@hogwarts build --no-cache -t ${PROJECT_NAME}:${BUILD_NUMBER} ."
             }
         }
 
