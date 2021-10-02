@@ -1,0 +1,16 @@
+#!/bin/bash
+
+echo "Creating venv"
+python3 -m venv venv
+
+echo "Sourcing venv"
+source venv/bin/activate
+
+echo "Installing pipenv"
+pip install pipenv
+
+echo "Syncing with Pipfile"
+pipenv sync
+
+echo "Starting server"
+python3 waitress_server.py -h

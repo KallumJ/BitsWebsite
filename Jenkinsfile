@@ -2,75 +2,66 @@ pipeline {
     agent any
 
     environment {
+        PROJECT_NAME = 'bits-website'
         DISCORD_WEBHOOK = credentials('discord-webhook')
     }
 
     stages {
-        stage("Master Uninstall") {
+        stage('Docker Build') {
             when {
                 branch 'master'
             }
 
             steps {
-                sh """
-                ssh jenkins@hogwarts << EOF
-                    cd /var/flask/bits.team
-
-                    echo "Closing website"
-                    screen -X -S Website quit
-
-                    echo "Wiping website directory"
-                    rm -rf *
-                    logout
-                """
+                // build the docker image based on the Dockerfile and tag it with the build number
+                // we use `-H ssh://jenkins@hogwarts` to connect to the docker daemon on hogwarts
+                sh "docker -H ssh://jenkins@hogwarts build -t ${PROJECT_NAME}:${BUILD_NUMBER} ."
             }
         }
 
        stage("Master Sync") {
-           when {
-                branch 'master'
-           }
+            when {
+                 branch 'master'
+            }
 
             environment {
                 WEBSITE_CONFIG = credentials('website-config')
             }
 
             steps {
+                // we copy the website to /var/bits-website which will then be mounted
+                // to the docker container during the next stage. this way the files
+                // stay easily accessible from the host.
+                sh "ssh jenkins@hogwarts rm -rf /var/bits-website/*"
                 sh 'cp $WEBSITE_CONFIG .'
-                sh "rsync -av * jenkins@hogwarts:/var/flask/bits.team"
+                sh "rsync -av * jenkins@hogwarts:/var/bits-website/"
             }
        }
 
-        stage("Master Deploy") {
+       stage ("Docker Deploy") {
             when {
-                branch 'master'
+                 branch 'master'
             }
 
             steps {
-                sh """
-                    ssh jenkins@hogwarts << EOF
-                      cd /var/flask/bits.team
-
-                      echo "Creating venv"
-                      python3 -m venv venv
-
-                      echo "Sourcing venv"
-                      source venv/bin/activate
-
-                      echo "Installing pipenv"
-                      pip install pipenv
-
-                      echo "Syncing with Pipfile"
-                      pipenv sync
-
-                      echo "Starting server"
-                      screen -dmS Website -d -m python3 waitress_server.py -h
-                """
-
-                sh "sleep 5"
-                sh "ssh jenkins@hogwarts screen -list | grep -q '\\.Website'" // Test server went up successfully
+                // we need to stop the container if it's already running. if it is not,
+                // this will throw the error, so we need to catch it and tell jenkins
+                // to mark it as successful anyways
+                catchError(buildResult: 'SUCCESS', stageResult: 'SUCCESS') {
+                    sh "docker -H ssh://jenkins@hogwarts stop ${PROJECT_NAME}"
+                }
+                // we also want to remove the container if it already exists
+                catchError(buildResult: 'SUCCESS', stageResult: 'SUCCESS') {
+                    sh "docker -H ssh://jenkins@hogwarts rm ${PROJECT_NAME}"
+                }
+                // now, start the container with the image we built in the last stage.
+                // we mount the application folder from hogwarts to /app, give it a
+                // suitable hostname and connect it to the hogwarts network.
+                // the -d option runs the container in the background
+                // the --rm option tells docker to remove the container after it stops
+                sh "docker -H ssh://jenkins@hogwarts run -d --name ${PROJECT_NAME} --mount source=${PROJECT_NAME},target=/app --network hogwarts ${PROJECT_NAME}:${BUILD_NUMBER}"
             }
-        }
+       }
     }
 
     post {
