@@ -2,4 +2,4 @@ from waitress import serve
 
 from __init__ import app
 
-serve(app, host="localhost", port="5000")
+serve(app, host="0.0.0.0", port="5000")
