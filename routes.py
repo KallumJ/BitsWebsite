@@ -8,14 +8,14 @@ from images import get_home_slideshow_images, get_bitsplus_slideshow_images
 from player_database_connector import PlayerDatabase
 from products import get_all_products
 from profiles import get_all_player_profiles
-from serverstatus import get_creative_status, get_vanilla_status
+from serverstatus import get_hufflepuff_status, get_ravenclaw_status
 
 routes = Blueprint("routes", __name__, template_folder="templates")
 
 
 @routes.route("/")
 def home():
-    return render_template("home.html", vStatus=get_vanilla_status(), cStatus=get_creative_status(),
+    return render_template("home.html", vStatus=get_ravenclaw_status(), cStatus=get_hufflepuff_status(),
                            home_slides_src=get_home_slideshow_images())
 
 

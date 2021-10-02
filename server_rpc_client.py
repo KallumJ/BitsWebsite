@@ -2,6 +2,6 @@ from rpc_client import RPCClient
 from config import rabbitMQRemoteHostname
 
 
-class PlayerRPCClient(RPCClient):
+class ServerRPCClient(RPCClient):
     def __init__(self):
-        super().__init__(rabbitMQRemoteHostname, "player-api")
+        super().__init__(rabbitMQRemoteHostname, "server-api")

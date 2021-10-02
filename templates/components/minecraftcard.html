@@ -20,8 +20,12 @@
                 <div class="led-red"></div>
                 {% endif %}
                 </p>
-                <p>Ip Address: play.bits.team</p>
                 <p>Player Count: {{ vStatus["player_count"] }}</p>
+                {% if vStatus["online"] %}
+                    <p>Version: {{ vStatus["version"] }}</p>
+                    {% else %}
+                    <p style="visibility: hidden">Version: {{ vStatus["version"] }}</p>
+                {% endif %}
             </div>
 
             <h2>Players Online:</h2>
@@ -51,8 +55,12 @@
                 <div class="led-red"></div>
                 {% endif %}
                 </p>
-                <p>Server Command: /server creative</p>
                 <p>Player Count: {{ cStatus["player_count"] }}</p>
+                {% if cStatus["online"] %}
+                    <p>Version: {{ cStatus["version"] }}</p>
+                    {% else %}
+                    <p style="visibility: hidden">Version: {{ cStatus["version"] }}</p>
+                {% endif %}
             </div>
 
             <h2>Players Online:</h2>

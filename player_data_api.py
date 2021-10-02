@@ -17,7 +17,7 @@ def get_uuid_from_username(username):
 
 def get_effective_name_from_uuid(uuid):
     payload = {
-        "query": "query($uuid: ID!) { player(uuid: $uuid) { username nickname }}",
+        "query": "query($uuid: ID!) { player(uuid: $uuid) { username, nickname }}",
         "variables": {"uuid": uuid}
     }
 
@@ -32,7 +32,7 @@ def get_effective_name_from_uuid(uuid):
 
 def get_list_of_vip_uuids():
     payload = {
-        "query": "query { players { uuid vip }}",
+        "query": "query { players { uuid, vip }}",
         "variables": {}
     }
 
