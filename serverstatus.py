@@ -41,6 +41,7 @@ def get_server_status(server):
             server_data["version"] = info["version"]["name"]
             server_data["player_count"] = info["players"]["online"]
 
+        if info["players"]["sample"]:
             for player in info["players"]["sample"]:
                 player_obj = Player()
                 player_obj.name = player["name"]
