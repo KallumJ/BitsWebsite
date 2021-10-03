@@ -14,7 +14,6 @@ pipenv sync
 
 echo "Setting permissions"
 chmod -R g+rw /app/venv
-chmod -R g+rw /app/__pycache__
 
 echo "Starting server"
 python3 waitress_server.py -h
