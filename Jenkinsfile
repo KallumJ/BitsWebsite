@@ -37,7 +37,7 @@ pipeline {
                 sh "rsync -av * jenkins@hogwarts:/var/bits-website/"
                 // set group permissions so the directory will be writable to the container
                 sh "ssh jenkins@hogwarts chgrp -R 1024 /var/bits-website/"
-                sh "ssh jenkins@hogwarts chmod -R g+w /var/bits-website/"
+                sh "ssh jenkins@hogwarts chmod -R g+rw /var/bits-website/"
             }
        }
 

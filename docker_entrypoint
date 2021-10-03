@@ -13,8 +13,7 @@ echo "Syncing with Pipfile"
 pipenv sync
 
 echo "Setting permissions"
-chgrp -R server-files .
-chmod -R g+w .
+chmod -R g+rw /app/
 
 echo "Starting server"
 python3 waitress_server.py -h
