@@ -5,7 +5,7 @@ LABEL Description="Bits Website"
 
 ## add non-root user
 RUN addgroup --gid 1024 server-files
-RUN adduser -u 2048 -g 1024 -s /bin/sh -D user
+RUN adduser --uid 2048 --ingroup server-files --shell /bin/sh -D user
 
 ## setup repositories
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/latest-stable/main/" >> /etc/apk/repositories
@@ -29,6 +29,8 @@ RUN chown user /app/
 ## setup start script
 COPY docker_entrypoint /opt/bits-website/start
 RUN chmod +x /opt/bits-website/start
+
+RUN groups user
 
 EXPOSE 5000/tcp
 
