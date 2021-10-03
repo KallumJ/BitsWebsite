@@ -35,6 +35,9 @@ pipeline {
                 sh "ssh jenkins@hogwarts rm -rf /var/bits-website/*"
                 sh 'cp $WEBSITE_CONFIG .'
                 sh "rsync -av * jenkins@hogwarts:/var/bits-website/"
+                // set group permissions so the directory will be writable to the container
+                sh "chgrp -R server-files ."
+                sh "chmod -R g+w ."
             }
        }
 
@@ -59,7 +62,7 @@ pipeline {
                 // suitable hostname and connect it to the hogwarts network.
                 // the -d option runs the container in the background
                 // the --rm option tells docker to remove the container after it stops
-                sh "docker -H ssh://jenkins@hogwarts run -d --name ${PROJECT_NAME} --mount source=${PROJECT_NAME},target=/app --network hogwarts ${PROJECT_NAME}:${BUILD_NUMBER}"
+                sh "docker -H ssh://jenkins@hogwarts run -d --name ${PROJECT_NAME} --mount source=${PROJECT_NAME},target=/app --network hogwarts -p 127.0.0.1:5000:5000/tcp ${PROJECT_NAME}:${BUILD_NUMBER}"
             }
        }
     }

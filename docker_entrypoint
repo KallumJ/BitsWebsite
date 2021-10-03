@@ -12,5 +12,9 @@ pip install pipenv
 echo "Syncing with Pipfile"
 pipenv sync
 
+echo "Setting permissions"
+chgrp -R server-files .
+chmod -R g+w .
+
 echo "Starting server"
 python3 waitress_server.py -h

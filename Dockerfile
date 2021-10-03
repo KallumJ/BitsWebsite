@@ -4,7 +4,8 @@ MAINTAINER Nex <nex@bits.team>
 LABEL Description="Bits Website"
 
 ## add non-root user
-RUN adduser -u 2048 -s /bin/sh -D user
+RUN addgroup --gid 1024 server-files
+RUN adduser -u 2048 -g 1024 -s /bin/sh -D user
 
 ## setup repositories
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/latest-stable/main/" >> /etc/apk/repositories
