@@ -36,8 +36,8 @@ pipeline {
                 sh 'cp $WEBSITE_CONFIG .'
                 sh "rsync -av * jenkins@hogwarts:/var/bits-website/"
                 // set group permissions so the directory will be writable to the container
-                sh "chgrp -R 1024 ."
-                sh "chmod -R g+w ."
+                sh "chgrp -R 1024 /var/bits-website/"
+                sh "chmod -R g+w /var/bits-website/"
             }
        }
 
