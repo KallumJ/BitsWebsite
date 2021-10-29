@@ -7,7 +7,7 @@ echo "Sourcing venv"
 source venv/bin/activate
 
 echo "Installing pipenv"
-pip install pipenv
+pip install --upgrade pip setuptools pipenv
 
 echo "Syncing with Pipfile"
 pipenv sync
@@ -16,4 +16,4 @@ echo "Setting permissions"
 chmod -R g+rw /app/venv
 
 echo "Starting server"
-python3 waitress_server.py -h
+exec python3 waitress_server.py -h

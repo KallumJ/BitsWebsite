@@ -1,0 +1,18 @@
+#!/bin/bash
+
+CONTAINER_NAME=$1
+
+while true; do
+	if docker -H ssh://jenkins@hogwarts logs $CONTAINER_NAME | grep -q "Starting server"; then
+	  sleep 2
+		echo "Deploy finished"
+		break
+	fi
+
+  docker -H ssh://jenkins@hogwarts logs $CONTAINER_NAME
+  if [ $? -eq 0 ]; then
+    sleep 2
+  else
+    exit -1
+  fi
+done

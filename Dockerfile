@@ -15,8 +15,6 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main/" >> /etc/apk/repositor
 ## install packages
 RUN apk update
 RUN apk add python3 acl
-RUN python3 -m ensurepip
-RUN pip3 install --no-cache --upgrade pip setuptools
 
 ## setup install dir
 RUN mkdir /opt/bits-website/
@@ -24,14 +22,14 @@ RUN chown user /opt/bits-website/
 
 ## setup app dir
 RUN mkdir /app/
-RUN chown user /app/
+ADD . /app/
+RUN chown -R user /app/
+RUN chmod -R g+rw /app/
 RUN setfacl -m "default:group::rwx" /app/
 
 ## setup start script
 COPY docker_entrypoint /opt/bits-website/start
 RUN chmod +x /opt/bits-website/start
-
-RUN groups user
 
 EXPOSE 5000/tcp
 
