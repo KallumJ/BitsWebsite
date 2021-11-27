@@ -204,21 +204,24 @@ class PlayerDatabase(object):
     # Returns the 3 players with the highest total score, as a tuple
     # TODO: Implement in SQL
     def get_top_3(self):
+        try:
+            if self.database:
+                # Get the current season
+                season = self.get_season_from_list(playerDbDefaultServer)
 
-        if self.database:
-            # Get the current season
-            season = self.get_season_from_list(playerDbDefaultServer)
+                # Sort by score
+                players = sorted(season.players, key=lambda k: k.total_score, reverse=True)
 
-            # Sort by score
-            players = sorted(season.players, key=lambda k: k.total_score, reverse=True)
-
-            # Return the top 3
-            if not len(players) >= 3:
-                return []
+                # Return the top 3
+                if not len(players) >= 3:
+                    return []
+                else:
+                    return players[0], players[1], players[2]
             else:
-                return players[0], players[1], players[2]
-        else:
+                return []
+        except AttributeError:
             return []
+
 
     # Remove all non number characters, and append it to the word Season
     @staticmethod

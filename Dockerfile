@@ -8,9 +8,9 @@ RUN addgroup --gid 1024 server-files
 RUN adduser --uid 2048 --ingroup server-files --shell /bin/sh -D user
 
 ## setup repositories
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/latest-stable/main/" >> /etc/apk/repositories
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/latest-stable/community/" >> /etc/apk/repositories
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main/" >> /etc/apk/repositories
+RUN echo "https://dl-cdn.alpinelinux.org/alpine/v3.14/main/" >> /etc/apk/repositories
+RUN echo "https://dl-cdn.alpinelinux.org/alpine/v3.14/community/" >> /etc/apk/repositories
+RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/main/" >> /etc/apk/repositories
 
 ## install packages
 RUN apk update

@@ -11,6 +11,7 @@ requests = "*"
 mysql-connector = "*"
 waitress = "*"
 pika = "*"
+colorama = "*"
 
 [dev-packages]
 

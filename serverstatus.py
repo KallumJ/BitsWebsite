@@ -7,7 +7,7 @@ client = ServerRPCClient()
 
 def get_ravenclaw_status():
     if check_on_hogwarts():
-        return get_server_status("ravenclaw")
+        return get_server_status("test-server")
     else:
         return get_server_status("localhost")
 
