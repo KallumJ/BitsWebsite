@@ -51,7 +51,7 @@ def get_server_status(server):
                 server_data["player_list"].append(player_obj)
 
     except Exception :
-        print("{} API did not respond. {}".format(server, response))
+        print("{} API did not respond.".format(server))
         return server_data
 
     return server_data
