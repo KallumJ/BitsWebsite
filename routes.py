@@ -2,7 +2,6 @@ from flask import render_template, redirect, url_for, Blueprint
 from flask_cors import cross_origin
 
 from config import playerDbDefaultServer
-from donors import get_donor_player_list
 from events_database_connector import EventsDatabase
 from images import get_home_slideshow_images, get_bitsplus_slideshow_images
 from player_database_connector import PlayerDatabase
@@ -26,7 +25,7 @@ def store():
 
 @routes.route("/donate/")
 def donate():
-    return render_template("donate.html", donorList=get_donor_player_list())
+    return redirect("https://ko-fi.com/bitsteam")
 
 
 @routes.route("/downloads/")
