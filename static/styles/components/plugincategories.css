@@ -1,0 +1,21 @@
+ol {
+    list-style-position: inside;
+}
+
+.hyperlink:link {
+    color: blue;
+}
+
+.hyperlink:visited {
+    color: purple;
+}
+
+.installation-images {
+    display: flex; 
+    justify-content: center;
+    padding: 20px;
+ }
+
+ #simplevoicechat {
+     margin-bottom: 10px;
+ }
