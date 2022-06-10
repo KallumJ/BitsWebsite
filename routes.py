@@ -91,6 +91,6 @@ def statistics_get(season):
 def discord():
     return redirect('https://discord.com/invite/Arfcnku')
 
-@routes.route("/recording")
+@routes.route("/tutorials")
 def recording():
-    return render_template("recording.html")
+    return render_template("tutorials.html")

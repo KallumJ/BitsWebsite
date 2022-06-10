@@ -1,17 +1,10 @@
-.recording-header {
-    font-size: 5rem;
-    color: white;
-    text-shadow: 0px 2px 3px #000000;
-    text-align: center;
-    padding: 25px;
-}
-
-.recording-info-card {
+.tutorial-info-card {
     background-color: white;
     width: 90%;
     margin: 0 auto;
     margin-bottom: 50px;
     padding: 10px;
+    margin-top: 50px;
 }
 
 .hyperlink:link {
@@ -22,21 +15,24 @@
     color: purple;
 }
 
-ol, ul {
+ol,
+ul {
     list-style-position: inside;
 }
 
-.recording-images {
-    display: flex; 
+.tutorial-images {
+    display: flex;
     justify-content: center;
     padding: 20px;
- }
+}
 
- li, h1, p {
-     padding: 5px;
- }
+li,
+h1,
+p {
+    padding: 5px;
+}
 
- .recording-page {
+.tutorial-page {
     min-height: 100vh;
 }
 
@@ -51,3 +47,13 @@ ol, ul {
 .rec-subheading {
     padding-top: 15px;
 }
+
+.installation-images {
+    display: flex; 
+    justify-content: center;
+    padding: 20px;
+ }
+
+ #simplevoicechat {
+     margin-bottom: 10px;
+ }

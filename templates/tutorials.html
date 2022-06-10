@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<link href="../static/styles/tutorial.css" rel="stylesheet">
+
+<div class="tutorial-page">
+    <div class="tutorial-info-card w3-card-4">
+        {% include "components/voice-chat-tutorial.html" %}
+        <hr>
+        {% include "components/recording-tutorial.html" %}
+    </div>
+</div>
+
+<script src="../../static/scripts/components/accordion.js"></script>
+
+{% endblock %}

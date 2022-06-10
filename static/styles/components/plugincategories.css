@@ -9,13 +9,3 @@ ol {
 .hyperlink:visited {
     color: purple;
 }
-
-.installation-images {
-    display: flex; 
-    justify-content: center;
-    padding: 20px;
- }
-
- #simplevoicechat {
-     margin-bottom: 10px;
- }

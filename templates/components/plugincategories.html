@@ -8,313 +8,119 @@
 
     <div class="plugin-item">
         <h2>Simple Voice Chat</h2>
-        <div id="simplevoicechat">
-            <p>We make use of a mod called Simple Voice Chat, which adds proximity voice chat to Minecraft, so you can
-                talk to other nearby players! It's mod page can be found <a class="hyperlink"
-                    href="https://www.curseforge.com/minecraft/mc-mods/simple-voice-chat">here</a> to get yourself a
-                download.</p>
-            <p>If you have never installed mods before, or need a refresher, here are some instructions, just select the
-                launcher of your choice.</p>
-            <h3>Installation Instructions:</h3>
-            <button class="w3-button w3-block w3-white w3-left-align"
-                onclick="revealOnAccordion('mclauncher')">Minecraft Launcher ▼</button>
-            <div class="w3-hide w3-animate-opacity" id="mclauncher">
-                <ol>
-                    <li>Head to <a class="hyperlink" href="https://fabricmc.net/use/installer">fabricmc.net</a> and download the latest
-                        fabric
-                        installer and run it.</li>
-                    <li>
-                        Ensuring the Minecraft Launcher is closed, and that the selected Minecraft version (underlined
-                        in red) is correct, hit install.
-                        <div class="installation-images">
-                            <img src="../../static/assets/images/installation_instructions/mclauncher/installer.jpg"
-                                alt="">
-                        </div>
+        <p>We make use of a mod called Simple Voice Chat, which adds proximity voice chat to Minecraft, so you can
+            talk to other nearby players! It's mod page can be found <a class="hyperlink"
+                href="https://www.curseforge.com/minecraft/mc-mods/simple-voice-chat">here</a> to get yourself a
+            download. If you need help installing the mod, check out the tutorials page <a class="hyperlink"
+                href="/tutorial">here</a>.</p>
+        <div class="plugin-item">
+            <h2>Custom Plugin</h2>
+            <div id="bitsplugin">
+                <p>Our custom plugin ensures allows us to add features we think are right for the server. It's highlight
+                    features are listed below:</p>
+                <ul>
+                    <li><code>/beam [player]</code> - Requests to teleport to the provided player
                     </li>
-                    <li>
-                        If all goes well, a success message like this will be shown. Dismiss it, close the installer,
-                        and open the Minecraft Launcher.
-                        <div class="installation-images">
-                            <img src="../../static/assets/images/installation_instructions/mclauncher/success.jpg"
-                                alt="">
-                        </div>
+                    <li><code>/bed</code> - Teleports the player back to the bed they last slept in</li>
+                    <li><code>/rtp</code> - Teleports the player to a random location on the map</li>
+                    <li><code>/warp [warp]</code> - Teleports the player to the specified warp. Only used for community
+                        areas, such as Spawn, Nether Hub, etc.
                     </li>
-                    <li>
-                        Under the "Installations" tab in the Minecraft Launcher (underlined in blue), you should see a
-                        new install called something like <code>fabric-loader-MC.VERSION.NUMBER</code>. This name is a
-                        bit ugly, so hit the button with 3 dots, then edit, and give it a nicer name, and hit save.
-                        <div class="installation-images">
-                            <img style="width: 50%"
-                                src="../../static/assets/images/installation_instructions/mclauncher/installations.jpg"
-                                alt="">
-                            <img style="width: 50%"
-                                src="../../static/assets/images/installation_instructions/mclauncher/renaming.jpg"
-                                alt="">
-                        </div>
-                    </li>
-                    <li>
-                        Again in the "Installations" tab, click the open folder button (boxed in blue)
-                        <div class="installation-images">
-                            <img src="../../static/assets/images/installation_instructions/mclauncher/open_folder.jpg"
-                                alt="">
-                        </div>
-                    </li>
-                    <li>
-                        If it doesn't exist already, create a folder in the folder that got opened called
-                        <code>mods</code>
-                        <div class="installation-images">
-                            <img style="width: 75%"
-                                src="../../static/assets/images/installation_instructions/mclauncher/create_mods_folder.jpg"
-                                alt="">
-                        </div>
-                    </li>
-                    <li>
-                        Drag your download for Simple Voice Chat into the <code>mods</code> folder. <strong>NOTE IF YOU
-                            ALREADY HAD A MODS FOLDER:</strong> if you already had a mods folder, you may already have
-                        other mods installed. These mods will need to be Fabric mods, and work with whatever version
-                        your trying to play. If they are incompatible, remove them.
-                        <div class="installation-images">
-                            <img style="width: 100%"
-                                src="../../static/assets/images/installation_instructions/mclauncher/move_mod.jpg"
-                                alt="">
-                        </div>
-                    </li>
-                    <li>
-                        Ensuring that the installation we just set up is selected in the installation selector
-                        (highlighted in blue), hit play.
-                        <div class="installation-images">
-                            <img src="../../static/assets/images/installation_instructions/mclauncher/play.jpg" alt="">
-                        </div>
-                    </li>
-                    <li>
-                        Finally, dismiss this safety message. It's nothing to worry about. It's just Mojang warning they
-                        can't gurantee safety features like player muting will work (they will :D). Thats all! Now
-                        Simple Voice Chat is installed!
-                        <div class="installation-images">
-                            <img src="../../static/assets/images/installation_instructions/mclauncher/dismiss_safety.jpg"
-                                alt="">
-                        </div>
-                    </li>
-                    <li>
-                        You can verify you installed everything properly by loading up a world and pressing the <code>V</code> key. It should bring up this settings menu for Simple Voice Chat, confirming everything worked!
-                        <div class="installation-images">
-                            <img src="../../static/assets/images/installation_instructions/verify_install.png"
-                                alt="">
-                        </div>
-                    </li>
-                </ol>
-            </div>
-            <button class="w3-button w3-block w3-white w3-left-align" onclick="revealOnAccordion('multimc')">MultiMC
-                ▼</button>
-            <div class="w3-hide w3-animate-opacity" id="multimc">
-                <ol>
-                    <li>
-                        Select the Minecraft instance you want to install the mod to, and press "Edit Instance"
-                        (highlighted in blue).
-                        <div class="installation-images">
-                            <img style="width: 75%;"
-                                src="../../static/assets/images/installation_instructions/multimc/edit_instance.jpg"
-                                alt="">
-                        </div>
-                    </li>
-                    <li>
-                        In the window that pops up, press "Install Fabric" (highlighted in blue).
-                        <div class="installation-images">
-                            <img src="../../static/assets/images/installation_instructions/multimc/install_fabric.jpg"
-                                alt="">
-                        </div>
-                    </li>
-                    <li>
-                        In the window that pops up, ensuring the starred version is selected, hit "Ok".
-                        <div class="installation-images">
-                            <img src="../../static/assets/images/installation_instructions/multimc/select_fabric_version.jpg"
-                                alt="">
-                        </div>
-                    </li>
-                    <li>
-                        Click "Open .minecraft" (highlighted in blue)
-                        <div class="installation-images">
-                            <img src="../../static/assets/images/installation_instructions/multimc/open_minecraft.jpg"
-                                alt="">
-                        </div>
-                    </li>
-                    <li>
-                        Drag your download for Simple Voice Chat into the <code>mods</code> folder.
-                        <div class="installation-images">
-                            <img style="width: 100%;"
-                                src="../../static/assets/images/installation_instructions/multimc/move_mod.jpg" alt="">
-                        </div>
-                    </li>
-                    <li>
-                        Thats it! Launch your instance, and it now has Simple Voice Chat installed!
-                    </li>
-                    <li>
-                        You can verify you installed everything properly by loading up a world and pressing the <code>V</code> key. It should bring up this settings menu for Simple Voice Chat, confirming everything worked!
-                        <div class="installation-images">
-                            <img src="../../static/assets/images/installation_instructions/verify_install.png"
-                                alt="">
-                        </div>
-                    </li>
-                </ol>
-            </div>
-            <button class="w3-button w3-block w3-white w3-left-align"
-                onclick="revealOnAccordion('curseforge')">Curseforge
-                ▼</button>
-            <div class="w3-hide w3-animate-opacity" id="curseforge">
-                <p>If you have played modded Minecraft recently, chances are you have used Curseforge to download your
-                    modpacks. Curseforge can also be used to manage "vanilla" installations, so here are some
-                    instructions if you want more of a "1-click-experience."</p>
-                <ol>
-                    <li>
-                        Click "Create Custom Profile" (highlighted in blue).
-                        <div class="installation-images">
-                            <img style="width: 75%;"
-                                src="../../static/assets/images/installation_instructions/curseforge/create_profile.jpg"
-                                alt="">
-                        </div>
-                    </li>
-                    <li>
-                        Give your profile a nice name, ensure the Minecraft version (highlighted in red) is correct, and
-                        change the "Game Type" toggle to "Fabric" (highlighted in blue), and press create.
-                        <div class="installation-images">
-                            <img style="width: 75%;"
-                                src="../../static/assets/images/installation_instructions/curseforge/profile_selection.jpg"
-                                alt="">
-                        </div>
-                    </li>
-                    <li>
-                        Right click the profile you created, and select "Add More Content" (highlighted in blue).
-                        <div class="installation-images">
-                            <img style="width: 75%;"
-                                src="../../static/assets/images/installation_instructions/curseforge/add_more_content.jpg"
-                                alt="">
-                        </div>
-                    </li>
-                    <li>
-                        Search <code>Simple Voice Chat</code> in the search bar, and hit install on the mod by
-                        henkelmax, highlighted in blue below.
-                        <div class="installation-images">
-                            <img style="width: 75%;"
-                                src="../../static/assets/images/installation_instructions/curseforge/mod_selection.jpg"
-                                alt="">
-                        </div>
-                    </li>
-                    <li>
-                        Thats it! Launch your profile and you'll now have a Minecraft instance with Simple Voice Chat
-                        installed!
-                    </li>
-                    <li>
-                        You can verify you installed everything properly by loading up a world and pressing the <code>V</code> key. It should bring up this settings menu for Simple Voice Chat, confirming everything worked!
-                        <div class="installation-images">
-                            <img src="../../static/assets/images/installation_instructions/verify_install.png"
-                                alt="">
-                        </div>
-                    </li>
-                </ol>
+                    <li><code>/nick [nickname]</code> - Gives you the specified nickname</li>
+                </ul>
             </div>
         </div>
-        If you hit any issues, feel free to DM us and we can help you out!
-    </div>
-    <hr style="color: lightgray;">
-    <div class="plugin-item">
-        <h2>Custom Plugin</h2>
-        <div id="bitsplugin">
-            <p>Our custom plugin ensures allows us to add features we think are right for the server. It's highlight
-                features are listed below:</p>
-            <ul>
-                <li><code>/beam [player]</code> - Requests to teleport to the provided player
-                </li>
-                <li><code>/bed</code> - Teleports the player back to the bed they last slept in</li>
-                <li><code>/rtp</code> - Teleports the player to a random location on the map</li>
-                <li><code>/warp [warp]</code> - Teleports the player to the specified warp. Only used for community
-                    areas, such as Spawn, Nether Hub, etc.
-                </li>
-                <li><code>/nick [nickname]</code> - Gives you the specified nickname</li>
-            </ul>
+        <div class="plugin-item">
+            <h2>Custom Advancements</h2>
+            <div id="advancements">
+                <p>We add our own custom achievements called Bits Questing Mode that get updated every season that
+                    provide
+                    more to work towards and act as a nice guide through the game. The categories of advancements are:
+                </p>
+                <table class="w3-table-all">
+                    <tr>
+                        <th class="table-header">Advancement Type</th>
+                    </tr>
+                    <tr>
+                        <th>Farming/Food</th>
+                    </tr>
+                    <tr>
+                        <th>Enchanting</th>
+                    </tr>
+                    <tr>
+                        <th>Crafting</th>
+                    </tr>
+                    <tr>
+                        <th>Weaponry/Combat</th>
+                    </tr>
+                    <tr>
+                        <th>Resource Collection</th>
+                    </tr>
+                    <tr>
+                        <th>The End</th>
+                    </tr>
+                    <tr>
+                        <th>The Nether</th>
+                    </tr>
+                    <tr>
+                        <th>Redstone</th>
+                    </tr>
+                </table>
+                <p>Some of the challenges found in the Questing mode will take some serious effort to complete, but they
+                    are
+                    all possible.</p>
+            </div>
+        </div>
+        <div class="plugin-item">
+            <h2>Custom Statistics</h2>
+            <div id="statistics">
+                <p>During your time playing the game, you may be rewarded for achieving a certain level of statistic.
+                    There
+                    are tons to discover, made up of both default Minecraft statistics and custom tracked ones, and each
+                    having 5 reward tiers of them. The more you work towards increasing the statistic, the better
+                    rewards
+                    you earn. Can you find them all, and top the leaderboards?</p>
+            </div>
+        </div>
+        <div class="plugin-item">
+            <h2>Wandering Trader Miniblocks</h2>
+            <div id="miniblocks">
+                <p>Wandering Trader trades have been replaced with mini blocks that you can use to add detail and
+                    decoration
+                    to your wonderful builds! For more information, click <a
+                        href="https://www.youtube.com/watch?v=L3En7cuOdHY" rel="noopener noreferrer"
+                        target="_blank">here</a>
+                </p>
+            </div>
+        </div>
+        <div class="plugin-item">
+            <h2>Silence Mobs</h2>
+            <div id="silence">
+                <p>You can name a mob "Silence me" to quieten them down! Finally you can include mobs in your builds
+                    without
+                    ruining your ear drums! For more information, click
+                    <a href="https://www.youtube.com/watch?v=lfcwKXhjC9Y&t=487s" rel="noopener noreferrer"
+                        target="_blank">here</a>
+                </p>
+            </div>
+        </div>
+        <div class="plugin-item">
+            <h2>Invisible Item Frames</h2>
+            <div id="invisible">
+                <p>You can splash item frames with a potion of invisibility to make the item frame disappear, but leave
+                    the
+                    item remaining!</p>
+            </div>
+        </div>
+        <div class="plugin-item">
+            <h2>Armor Stand Posing</h2>
+            <div id="armor">
+                <p>Give your build the coolest statues on the server by posing them exactly how you envisioned! For more
+                    information, click
+                    <a href="https://www.youtube.com/watch?v=nV9-_RacnoI" rel="noopener noreferrer"
+                        target="_blank">here</a>
+                </p>
+            </div>
         </div>
     </div>
-    <div class="plugin-item">
-        <h2>Custom Advancements</h2>
-        <div id="advancements">
-            <p>We add our own custom achievements called Bits Questing Mode that get updated every season that provide
-                more to work towards and act as a nice guide through the game. The categories of advancements are:</p>
-            <table class="w3-table-all">
-                <tr>
-                    <th class="table-header">Advancement Type</th>
-                </tr>
-                <tr>
-                    <th>Farming/Food</th>
-                </tr>
-                <tr>
-                    <th>Enchanting</th>
-                </tr>
-                <tr>
-                    <th>Crafting</th>
-                </tr>
-                <tr>
-                    <th>Weaponry/Combat</th>
-                </tr>
-                <tr>
-                    <th>Resource Collection</th>
-                </tr>
-                <tr>
-                    <th>The End</th>
-                </tr>
-                <tr>
-                    <th>The Nether</th>
-                </tr>
-                <tr>
-                    <th>Redstone</th>
-                </tr>
-            </table>
-            <p>Some of the challenges found in the Questing mode will take some serious effort to complete, but they are
-                all possible.</p>
-        </div>
-    </div>
-    <div class="plugin-item">
-        <h2>Custom Statistics</h2>
-        <div id="statistics">
-            <p>During your time playing the game, you may be rewarded for achieving a certain level of statistic. There
-                are tons to discover, made up of both default Minecraft statistics and custom tracked ones, and each
-                having 5 reward tiers of them. The more you work towards increasing the statistic, the better rewards
-                you earn. Can you find them all, and top the leaderboards?</p>
-        </div>
-    </div>
-    <div class="plugin-item">
-        <h2>Wandering Trader Miniblocks</h2>
-        <div id="miniblocks">
-            <p>Wandering Trader trades have been replaced with mini blocks that you can use to add detail and decoration
-                to your wonderful builds! For more information, click <a
-                    href="https://www.youtube.com/watch?v=L3En7cuOdHY" rel="noopener noreferrer"
-                    target="_blank">here</a>
-            </p>
-        </div>
-    </div>
-    <div class="plugin-item">
-        <h2>Silence Mobs</h2>
-        <div id="silence">
-            <p>You can name a mob "Silence me" to quieten them down! Finally you can include mobs in your builds without
-                ruining your ear drums! For more information, click
-                <a href="https://www.youtube.com/watch?v=lfcwKXhjC9Y&t=487s" rel="noopener noreferrer"
-                    target="_blank">here</a>
-            </p>
-        </div>
-    </div>
-    <div class="plugin-item">
-        <h2>Invisible Item Frames</h2>
-        <div id="invisible">
-            <p>You can splash item frames with a potion of invisibility to make the item frame disappear, but leave the
-                item remaining!</p>
-        </div>
-    </div>
-    <div class="plugin-item">
-        <h2>Armor Stand Posing</h2>
-        <div id="armor">
-            <p>Give your build the coolest statues on the server by posing them exactly how you envisioned! For more
-                information, click
-                <a href="https://www.youtube.com/watch?v=nV9-_RacnoI" rel="noopener noreferrer" target="_blank">here</a>
-            </p>
-        </div>
-    </div>
-</div>
-<script src="../../static/scripts/components/accordion.js"></script>
+    <script src="../../static/scripts/components/accordion.js"></script>
