@@ -1,7 +1,7 @@
 import os
 
 from discord_markdown.discord_markdown import convert_to_html
-from player_data_api import get_uuid_from_username, get_effective_name_from_uuid
+from api.player_data_api import get_uuid_from_username, get_effective_name_from_uuid
 
 
 PROFILES_DIR = "./static/assets/profiles/"

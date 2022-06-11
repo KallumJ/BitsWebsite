@@ -1,22 +1,40 @@
-from remote_server_utils import check_on_hogwarts
-from server_rpc_client import ServerRPCClient
+from util.remote_server_utils import check_on_hogwarts
+from api.server_rpc_client import ServerRPCClient
 import json
 
 client = ServerRPCClient()
 
 
 def get_ravenclaw_status():
-    if check_on_hogwarts():
-        return get_server_status("test-server")
+    if client.connected:
+        if check_on_hogwarts():
+            return get_server_status("ravenclaw")
+        else:
+            return get_server_status("localhost")
     else:
-        return get_server_status("localhost")
+        server_data = {
+            "online": False,
+            "player_count": 0,
+            "player_list": [],
+            "version": ""
+        }
+        return server_data;
 
 
 def get_hufflepuff_status():
-    if check_on_hogwarts():
-        return get_server_status("hufflepuff")
+    if client.connected:
+        if check_on_hogwarts():
+            return get_server_status("hufflepuff")
+        else:
+            return get_server_status("localhost")
     else:
-        return get_server_status("localhost")
+        server_data = {
+            "online": False,
+            "player_count": 0,
+            "player_list": [],
+            "version": ""
+        }
+        return server_data;
 
 
 def get_server_status(server):
@@ -50,8 +68,8 @@ def get_server_status(server):
 
                 server_data["player_list"].append(player_obj)
 
-    except Exception :
-        print("{} API did not respond.".format(server))
+    except Exception:
+        print("{} API did not respond. ".format(server))
         return server_data
 
     return server_data

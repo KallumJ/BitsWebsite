@@ -17,6 +17,9 @@ wd4Img.src = imageDir + "116.jpg"
 let wd5Img = new Image()
 wd5Img.src = imageDir + "117.jpg"
 
+let wd6Img = new Image()
+wd6Img.src = imageDir + "118.jpg"
+
 let vResourceImg = new Image()
 vResourceImg.src = imageDir + "vanillapack.jpg"
 
@@ -28,7 +31,7 @@ initalBackgroundImg.src = imageDir + "DownloadsBackground.jpg"
 
 
 // Store images in array so JS doesnt release them
-let images = [wd1Img, wd2Img, wd3Img, vResourceImg, bResourceImg, initalBackgroundImg, wd4Img, wd5Img]
+let images = [wd1Img, wd2Img, wd3Img, vResourceImg, bResourceImg, initalBackgroundImg, wd4Img, wd5Img, wd6Img]
 
 function changeImg(index) {
     document.getElementById("masterpage").style = masterpageStyle.replace("$", images[index].src)
@@ -98,6 +101,18 @@ function wd5Redirect() {
     location.href = "https://download.bits.team/worlds/1.17"
 }
 
+function wd6On() {
+    changeImg(8)
+}
+
+function wd6Off() {
+    resetImg()
+}
+
+function wd6Redirect() {
+    location.href = "https://download.bits.team/worlds/1.18"
+}
+
 function vResourceOn() {
     changeImg(3)
 }
@@ -107,7 +122,8 @@ function vResourceOff() {
 }
 
 function vResourceRedirect() {
-    location.href = "https://download.bits.team/resourcepack"
+    document.getElementById("generating-card").style.visibility = "visible"
+    location.href = "/download/resourcepack"
 }
 
 function bResourceOn() {

@@ -12,6 +12,7 @@ mysql-connector = "*"
 waitress = "*"
 pika = "*"
 colorama = "*"
+gitpython = "*"
 
 [dev-packages]
 

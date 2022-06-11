@@ -7,3 +7,5 @@ venv/
 __pycache__/
 win-venv/
 linux-venv/
+
+static/downloads/

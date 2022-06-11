@@ -2,7 +2,7 @@ import pika
 from pika.exceptions import AMQPConnectionError
 
 from config import rabbitMQPassword, rabbitMQUsername, rabbitMQLocalHostname
-from remote_server_utils import check_on_hogwarts
+from util.remote_server_utils import check_on_hogwarts
 import uuid
 
 # I changed the way this client works, so it's now slightly different than the

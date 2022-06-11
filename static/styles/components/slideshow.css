@@ -1,17 +1,33 @@
-:root {
-    --slideshow-image-height: 650px;
+@media screen and (max-width: 2560px) {
+    .slideshow-image {
+        height: 900px;
+        padding-bottom: 30px
+    }
+    
+    .slideshow-container {
+        height: 900px;
+    }
+}
+
+
+@media screen and (max-width: 1920px) {
+    .slideshow-image {
+        height: 700px;
+    }
+    
+    .slideshow-container {
+        height: 700px;
+    }
 }
 
 .slideshow-image {
     width: 100%;
-    height: var(--slideshow-image-height);
     object-fit: cover;
 }
 
 /* Position the image container (needed to position the left and right arrows) */
 .slideshow-container {
     position: relative;
-    height: var(--slideshow-image-height);
     padding-bottom: 670px;
 }
 

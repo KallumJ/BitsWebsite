@@ -19,8 +19,8 @@
             <li class="link" id="store" onclick="location.href='/store'">Store</li>
             <li class="link" id="donate" onclick="location.href='/donate'">Donate</li>
             <li class="link" id="downloads" onclick="location.href='/downloads'">Downloads</li>
-            <li class="link" onclick="document.getElementById('modal').style.display='block'">BitsVoice</li>
             <li class="link" id="bitsplus" onclick="location.href='/bitsplus'">Bits+</li>
+            <li class="link" id="clips" onclick="location.href='/clips'">Clips</li>
             <div class="dropdown">
                 <li class="link">Other</li>
                 <div class="dropdown-content">
@@ -28,7 +28,7 @@
                         <li><a href="/player-profiles">Player Profiles</a></li>
                         <li><a href="/rules-whitelist">Rules/Whitelist</a></li>
                         <li><a href="/plugin-info">Plugin Info</a></li>
-                        <li><a href="/statistics">Statistics</a></li>
+                        <li><a href="/map">Map</a></li>
                         <li><a href="/tutorials">Tutorials</a></li>
                     </ul>
                 </div>
@@ -36,19 +36,6 @@
         </ul>
     </div>
 </nav>
-
-<div class="w3-modal" id="modal">
-    <div class="w3-modal-content w3-animate-top w3-card-4">
-        <header class="w3-container w3-blue">
-        <span class="w3-button w3-display-topright"
-              onclick="document.getElementById('modal').style.display='none'">&times;</span>
-            <h2>BitsVoice...</h2>
-        </header>
-        <div class="w3-container">
-            <p>...is coming soon... Stay tuned...</p>
-        </div>
-    </div>
-</div>
 <div class="page-content"></div>
 {% block content %}
 {% endblock %}

@@ -1,4 +1,4 @@
-from file_utils import get_products_file
+from util.file_utils import get_products_file
 
 
 def get_all_products():

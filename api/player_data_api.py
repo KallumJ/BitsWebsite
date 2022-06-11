@@ -1,4 +1,4 @@
-from player_rpc_client import PlayerRPCClient
+from api.player_rpc_client import PlayerRPCClient
 import json
 
 client = PlayerRPCClient()

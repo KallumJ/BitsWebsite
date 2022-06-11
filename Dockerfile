@@ -15,6 +15,7 @@ RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/main/" >> /etc/apk/reposito
 ## install packages
 RUN apk update
 RUN apk add python3 acl
+RUN apk add git
 
 ## setup install dir
 RUN mkdir /opt/bits-website/
