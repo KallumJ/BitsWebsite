@@ -14,7 +14,7 @@ pipeline {
             }
 
             steps {
-                sh 'cp $WEBSITE_CONFIG .'
+                sh 'cat $WEBSITE_CONFIG > config.py'
 
                 // build the docker image based on the Dockerfile and tag it with the build number
                 // we use `-H ssh://jenkins@hogwarts` to connect to the docker daemon on hogwarts
