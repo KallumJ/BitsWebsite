@@ -7,15 +7,9 @@ LABEL Description="Bits Website"
 RUN addgroup --gid 1024 server-files
 RUN adduser --uid 2048 --ingroup server-files --shell /bin/sh -D user
 
-## setup repositories
-RUN echo "https://dl-cdn.alpinelinux.org/alpine/v3.14/main/" >> /etc/apk/repositories
-RUN echo "https://dl-cdn.alpinelinux.org/alpine/v3.14/community/" >> /etc/apk/repositories
-RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/main/" >> /etc/apk/repositories
-
 ## install packages
 RUN apk update
-RUN apk add python3 acl
-RUN apk add git
+RUN apk add python3 acl git
 
 ## setup install dir
 RUN mkdir /opt/bits-website/
